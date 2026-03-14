@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>K Gym Studio | Hyderabad's Premium Fitness Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--red:#e63124;--dark:#111;--charcoal:#1c1c1c;--offwhite:#f7f5f2;--warm:#f0ece4;--text:#2a2a2a;--muted:#888;--border:#e0dbd3}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;background:var(--offwhite);color:var(--text);overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:70px;background:rgba(17,17,17,0.97);border-bottom:1px solid rgba(255,255,255,0.06)}
+.logo-wrap{display:flex;align-items:center;gap:12px}
+.logo-icon{width:40px;height:40px;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:#fff}
+.logo-text{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;letter-spacing:2px;color:#fff;text-transform:uppercase}
+.logo-text span{color:var(--red)}
+.nav-menu{display:flex;gap:32px;list-style:none}
+.nav-menu a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;transition:color .2s}
+.nav-menu a:hover{color:#fff}
+.nav-right{display:flex;align-items:center;gap:20px}
+.nav-phone{color:rgba(255,255,255,0.5);font-size:12px;font-weight:700;letter-spacing:1px;text-decoration:none;display:flex;align-items:center;gap:6px}
+.nav-phone:hover{color:var(--red)}
+.nav-btn{background:var(--red);color:#fff;padding:10px 24px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:all .2s}
+.nav-btn:hover{background:#c9271f;transform:translateY(-1px)}
+
+/* HERO */
+.hero{min-height:100vh;padding-top:70px;display:grid;grid-template-columns:55% 45%;background:var(--dark);position:relative;overflow:hidden}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 60px 80px 56px;position:relative;z-index:1}
+.hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.eyebrow-line{width:32px;height:2px;background:var(--red)}
+.eyebrow-text{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red)}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(64px,7.5vw,104px);font-weight:900;line-height:.92;color:#fff;text-transform:uppercase;letter-spacing:-1px;margin-bottom:24px}
+.hero h1 .outline{-webkit-text-stroke:2px rgba(255,255,255,0.25);color:transparent}
+.hero h1 .accent{color:var(--red)}
+.hero-sub{font-size:16px;color:rgba(255,255,255,0.45);line-height:1.8;max-width:420px;margin-bottom:44px;font-weight:300}
+.hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:64px}
+.btn-red{background:var(--red);color:#fff;padding:15px 36px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;display:inline-block;transition:all .2s}
+.btn-red:hover{background:#c9271f;transform:translateY(-2px);box-shadow:0 8px 24px rgba(230,49,36,0.3)}
+.btn-ghost{border:1.5px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);padding:15px 32px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;display:inline-block;transition:all .2s}
+.btn-ghost:hover{border-color:#fff;color:#fff}
+.hero-meta{display:flex;gap:48px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.08)}
+.hero-meta-num{font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:900;color:#fff;line-height:1}
+.hero-meta-num span{color:var(--red)}
+.hero-meta-label{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:1.5px;text-transform:uppercase;margin-top:4px}
+.hero-right{position:relative;overflow:hidden}
+.hero-img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:.75}
+.hero-badge{position:absolute;top:40px;left:40px;width:110px;height:110px;background:var(--red);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;animation:spin-slow 12s linear infinite;z-index:2}
+@keyframes spin-slow{to{transform:rotate(360deg)}}
+.badge-inner{display:flex;flex-direction:column;align-items:center;animation:spin-slow 12s linear infinite reverse}
+.badge-num{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;color:#fff;line-height:1}
+.badge-text{font-size:9px;font-weight:700;letter-spacing:1px;color:rgba(255,255,255,0.8);text-transform:uppercase}
+.hero-bottom-strip{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);padding:24px 32px;border-top:1px solid rgba(255,255,255,0.06);z-index:2}
+.strip-label{font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.strip-tags{display:flex;gap:8px;flex-wrap:wrap}
+.strip-tag{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.5)}
+.strip-tag.active{border-color:var(--red);color:var(--red)}
+
+/* TICKER */
+.ticker{background:var(--red);padding:14px 0;overflow:hidden}
+.ticker-track{display:flex;gap:0;white-space:nowrap;animation:ticker 25s linear infinite}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker-item{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#fff;padding:0 40px;display:flex;align-items:center;gap:40px;flex-shrink:0}
+.ticker-sep{width:4px;height:4px;background:rgba(255,255,255,0.4);border-radius:50%;flex-shrink:0}
+
+/* SECTION BASE */
+.section{padding:100px 56px}
+.sec-label{display:flex;align-items:center;gap:14px;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.sec-label::before{content:'';width:28px;height:2px;background:var(--red)}
+.sec-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(42px,5vw,68px);font-weight:900;text-transform:uppercase;line-height:.95;letter-spacing:-.5px}
+.sec-sub{font-size:15px;color:var(--muted);line-height:1.8;max-width:480px;margin-top:16px}
+
+/* PROGRAMS */
+.programs-section{background:var(--offwhite)}
+.programs-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;flex-wrap:wrap;gap:24px}
+.programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.prog-card{background:#fff;overflow:hidden;position:relative;cursor:pointer;transition:all .3s}
+.prog-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.1)}
+.prog-img-wrap{height:200px;overflow:hidden;position:relative}
+.prog-img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.prog-card:hover .prog-img{transform:scale(1.07)}
+.prog-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,rgba(0,0,0,.1) 60%)}
+.prog-num-overlay{position:absolute;top:14px;right:16px;font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:900;color:rgba(255,255,255,0.25);line-height:1}
+.prog-body{padding:28px 28px 32px}
+.prog-name{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.prog-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:18px}
+.prog-foot{display:flex;align-items:center;justify-content:space-between}
+.prog-tag{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;background:var(--warm);color:#666}
+.prog-arrow{font-size:20px;color:var(--red);font-weight:900;transition:transform .2s}
+.prog-card:hover .prog-arrow{transform:translateX(5px)}
+
+/* SCHEDULE */
+.schedule-section{background:var(--dark)}
+.schedule-section .sec-title{color:#fff}
+.schedule-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:2px;margin-top:56px}
+.day-head{background:var(--charcoal);padding:16px 12px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:2px}
+.day-head.today{background:var(--red);color:#fff}
+.class-slot{background:rgba(255,255,255,0.03);padding:14px 10px;margin-bottom:2px;text-align:center;transition:background .2s;cursor:pointer}
+.class-slot:hover{background:rgba(230,49,36,.12)}
+.class-time{font-size:10px;font-weight:700;color:rgba(255,255,255,0.25);letter-spacing:1px;margin-bottom:4px}
+.class-name{font-size:11px;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:.5px}
+.class-slot.highlight .class-name{color:var(--red)}
+.class-slot.highlight{background:rgba(230,49,36,.08);border-left:2px solid var(--red)}
+
+/* TRAINERS */
+.trainers-section{background:var(--warm)}
+.trainers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:56px}
+.trainer-card{background:#fff;overflow:hidden;transition:transform .3s}
+.trainer-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.12)}
+.trainer-photo{width:100%;height:300px;object-fit:cover;object-position:top;display:block;transition:transform .5s}
+.trainer-card:hover .trainer-photo{transform:scale(1.04)}
+.trainer-exp{position:absolute;top:16px;right:16px;background:var(--red);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;padding:4px 10px;text-transform:uppercase}
+.trainer-photo-wrap{position:relative;overflow:hidden}
+.trainer-info{padding:24px 28px 28px}
+.trainer-name{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.trainer-role{font-size:11px;font-weight:700;color:var(--red);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px}
+.trainer-bio{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px}
+.trainer-tags{display:flex;gap:6px;flex-wrap:wrap}
+.trainer-tag{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;background:var(--warm);color:#555}
+
+/* PRICING */
+.pricing-section{background:var(--offwhite)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:56px}
+.price-card{padding:52px 36px;background:#fff;position:relative;transition:all .3s}
+.price-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.08)}
+.price-card.hot{background:var(--dark)}
+.price-card.hot .plan-name,.price-card.hot .feat-item{color:rgba(255,255,255,.65)}
+.price-card.hot .price-per{color:rgba(255,255,255,.35)}
+.best-tag{position:absolute;top:0;right:0;background:var(--red);color:#fff;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 16px}
+.plan-name{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:28px}
+.price-amt{font-family:'Barlow Condensed',sans-serif;font-size:72px;font-weight:900;line-height:1;color:var(--dark);margin-bottom:2px}
+.price-card.hot .price-amt{color:#fff}
+.price-amt sup{font-size:28px;vertical-align:top;margin-top:12px;margin-right:2px}
+.price-per{font-size:13px;color:var(--muted);margin-bottom:36px}
+.feat-list{list-style:none;margin-bottom:44px;display:flex;flex-direction:column;gap:12px}
+.feat-item{font-size:14px;color:var(--text);display:flex;align-items:center;gap:12px}
+.feat-check{width:18px;height:18px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;color:#fff;font-weight:900}
+.feat-x{width:18px;height:18px;background:var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;color:#aaa}
+.price-card.hot .feat-check{background:#fff;color:var(--red)}
+.plan-btn{display:block;text-align:center;padding:15px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all .2s;cursor:pointer;border:none;width:100%;font-family:'Lato',sans-serif}
+.plan-btn-outline{border:2px solid var(--dark);color:var(--dark);background:transparent}
+.plan-btn-outline:hover{background:var(--dark);color:#fff}
+.plan-btn-filled{background:var(--red);color:#fff}
+.plan-btn-filled:hover{background:#c9271f}
+
+/* GALLERY */
+.gallery-section{background:var(--dark);padding:100px 0}
+.gallery-header{padding:0 56px;margin-bottom:56px}
+.gallery-header .sec-title{color:#fff}
+.gallery-scroll{display:flex;gap:3px;overflow-x:auto;padding:0 56px;scrollbar-width:none}
+.gallery-scroll::-webkit-scrollbar{display:none}
+.gallery-item{flex-shrink:0;width:300px;height:360px;position:relative;overflow:hidden}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.gallery-item:hover img{transform:scale(1.06)}
+.gallery-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent);padding:32px 20px 20px;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#fff}
+
+/* TESTIMONIALS */
+.testimonials-section{background:var(--warm)}
+.t-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;margin-top:56px}
+.t-card{background:#fff;padding:44px 36px;position:relative;cursor:default;transition:all .3s}
+.t-card:hover{background:var(--dark)}
+.t-card:hover .t-body,.t-card:hover .t-name{color:#fff}
+.t-card:hover .t-role,.t-card:hover .t-date{color:rgba(255,255,255,.35)}
+.t-stars{color:var(--red);font-size:14px;letter-spacing:2px;margin-bottom:20px}
+.t-body{font-size:14px;line-height:1.85;color:var(--text);margin-bottom:28px;font-style:italic;transition:color .3s}
+.t-body::before{content:'\201C';font-family:'Barlow Condensed',sans-serif;font-size:48px;color:var(--red);line-height:.5;display:block;margin-bottom:8px}
+.t-name{font-weight:700;font-size:14px;margin-bottom:2px;transition:color .3s}
+.t-role{font-size:12px;color:var(--muted);transition:color .3s}
+.t-date{font-size:11px;color:#bbb;margin-top:2px;transition:color .3s}
+.t-verified{position:absolute;top:24px;right:24px;background:rgba(0,128,0,.08);color:green;font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 8px;border-radius:2px}
+
+/* CONTACT */
+.location-section{background:var(--offwhite);display:grid;grid-template-columns:1fr 1fr}
+.loc-left{padding:100px 56px;display:flex;flex-direction:column;justify-content:center}
+.loc-detail{margin-top:40px;display:flex;flex-direction:column;gap:0}
+.loc-row{display:flex;gap:18px;align-items:flex-start;padding:22px 0;border-bottom:1px solid var(--border)}
+.loc-row:last-child{border-bottom:none}
+.loc-icon-box{width:44px;height:44px;background:var(--dark);border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff}
+.loc-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.loc-val{font-size:14px;font-weight:700;color:var(--text);line-height:1.5}
+.loc-val a{color:var(--text);text-decoration:none}
+.loc-val a:hover{color:var(--red)}
+.loc-right{position:relative;overflow:hidden}
+.loc-map-img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.3)}
+.loc-map-overlay{position:absolute;inset:0;background:rgba(0,0,0,.45);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:40px}
+.map-pin-icon{color:#fff}
+.map-area{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:700;color:#fff;letter-spacing:1px;text-transform:uppercase;text-align:center}
+.map-addr{font-size:13px;color:rgba(255,255,255,.6);line-height:1.6;text-align:center}
+.map-btn{display:inline-block;background:var(--red);color:#fff;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:12px 28px;text-decoration:none;transition:all .2s}
+.map-btn:hover{background:#c9271f}
+
+/* CTA */
+.cta-section{background:var(--red);padding:100px 56px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:60px}
+.cta-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(48px,6vw,88px);font-weight:900;text-transform:uppercase;line-height:.92;color:#fff;letter-spacing:-1px}
+.cta-sub{color:rgba(255,255,255,.65);font-size:16px;margin-top:16px;line-height:1.7}
+.cta-actions{display:flex;flex-direction:column;gap:12px;align-items:flex-end;flex-shrink:0}
+.cta-btn-white{background:#fff;color:var(--red);padding:16px 40px;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:all .2s;display:flex;align-items:center;gap:9px}
+.cta-btn-white:hover{background:var(--dark);color:#fff}
+.cta-btn-outline{border:2px solid rgba(255,255,255,.4);color:#fff;padding:14px 40px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:all .2s;display:flex;align-items:center;gap:9px}
+.cta-btn-outline:hover{border-color:#fff}
+
+/* FOOTER */
+footer{background:#0a0a0a;padding:64px 56px 32px;border-top:1px solid rgba(255,255,255,.04)}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
+.footer-brand .logo-wrap{margin-bottom:20px}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,.3);line-height:1.8;max-width:260px}
+.footer-col-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:20px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:#fff}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;border-top:1px solid rgba(255,255,255,.06);flex-wrap:wrap;gap:16px}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.2);line-height:1.6}
+.footer-copy a{color:var(--red);text-decoration:none}
+.footer-social{display:flex;gap:10px}
+.social-link{width:36px;height:36px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .2s;color:rgba(255,255,255,.5);border-radius:4px}
+.social-link:hover{background:var(--red);color:#fff;border-color:var(--red)}
+
+/* CONTACT FORM */
+.contact-form-section{background:var(--dark);padding:100px 56px}
+.cf-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.cf-left .sec-title{color:#fff}
+.cf-left .sec-sub{color:rgba(255,255,255,.4)}
+.cf-form{display:flex;flex-direction:column;gap:14px}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cf-f{display:flex;flex-direction:column;gap:6px}
+.cf-lbl{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.cf-in,.cf-ta{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff;padding:12px 14px;font-size:14px;font-family:'Lato',sans-serif;outline:none;transition:border-color .2s;border-radius:2px}
+.cf-in:focus,.cf-ta:focus{border-color:var(--red)}
+.cf-in::placeholder,.cf-ta::placeholder{color:rgba(255,255,255,.2)}
+.cf-ta{resize:vertical;min-height:110px}
+.cf-sub{background:var(--red);color:#fff;border:none;padding:14px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-family:'Lato',sans-serif;transition:all .2s}
+.cf-sub:hover{background:#c9271f}
+.cf-msg{padding:12px;font-size:13px;font-weight:600;display:none;border-radius:2px;margin-top:4px}
+.cf-msg.ok{background:rgba(0,128,0,.1);color:#4caf50;border:1px solid rgba(0,128,0,.2)}
+.cf-msg.err{background:rgba(230,49,36,.1);color:var(--red);border:1px solid rgba(230,49,36,.2)}
+
+.reveal{opacity:0;transform:translateY(28px);transition:all .65s cubic-bezier(.16,1,.3,1)}
+.reveal.show{opacity:1;transform:translateY(0)}
+@media(max-width:960px){
+  nav{padding:0 20px}.nav-menu,.nav-phone{display:none}
+  .hero{grid-template-columns:1fr}.hero-right{min-height:320px}.hero-left{padding:60px 20px}
+  .section{padding:72px 20px}.programs-grid,.trainers-grid,.pricing-grid{grid-template-columns:1fr}
+  .schedule-grid{grid-template-columns:repeat(3,1fr)}.t-grid{grid-template-columns:1fr}
+  .location-section{grid-template-columns:1fr}.loc-left{padding:72px 20px}.loc-right{min-height:320px}
+  .cta-section{grid-template-columns:1fr;gap:32px;padding:72px 20px}.cta-actions{align-items:flex-start}
+  .footer-top{grid-template-columns:1fr 1fr}.footer{padding:48px 20px 24px}
+  .gallery-item{width:240px;height:280px}.gallery-section{padding:72px 0}.gallery-header,.gallery-scroll{padding:0 20px}
+  .contact-form-section{padding:72px 20px}.cf-grid{grid-template-columns:1fr;gap:48px}.cf-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="logo-wrap">
+    <div class="logo-icon">K</div>
+    <div class="logo-text">K GYM <span>STUDIO</span></div>
+  </div>
+  <ul class="nav-menu">
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#trainers">Trainers</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="tel:+918688496208" class="nav-phone">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6 19.79 19.79 0 0 1 1.6 5a2 2 0 0 1 1.99-2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17.92z"/></svg>
+      +91 86884 96208
+    </a>
+    <a href="#pricing" class="nav-btn">Free Trial</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow"><div class="eyebrow-line"></div><div class="eyebrow-text">Hyderabad's Premium Fitness Hub</div></div>
+    <h1>PUSH<br/><span class="outline">YOUR</span><br/>LIMIT<span class="accent">S</span></h1>
+    <p class="hero-sub">Real training. Real results. K Gym Studio brings together elite coaching, science-backed programs, and a community that pushes you to be your absolute best — every single day.</p>
+    <div class="hero-actions">
+      <a href="#pricing" class="btn-red">Start Free Trial</a>
+      <a href="#programs" class="btn-ghost">View Programs</a>
+    </div>
+    <div class="hero-meta">
+      <div><div class="hero-meta-num">8<span>+</span></div><div class="hero-meta-label">Years Active</div></div>
+      <div><div class="hero-meta-num">3<span>K+</span></div><div class="hero-meta-label">Members</div></div>
+      <div><div class="hero-meta-num">22<span>+</span></div><div class="hero-meta-label">Trainers</div></div>
+      <div><div class="hero-meta-num">4.9<span>★</span></div><div class="hero-meta-label">Google Rating</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=900&q=80&fit=crop" alt="K Gym Studio — Premium Fitness"/>
+    <div class="hero-badge"><div class="badge-inner"><div class="badge-num">7</div><div class="badge-text">Day Free</div></div></div>
+    <div class="hero-bottom-strip">
+      <div class="strip-label">Available Programs</div>
+      <div class="strip-tags">
+        <div class="strip-tag active">Strength</div><div class="strip-tag active">HIIT</div>
+        <div class="strip-tag">Yoga</div><div class="strip-tag">Boxing</div>
+        <div class="strip-tag">Cardio</div><div class="strip-tag">Nutrition</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="ticker-item">Strength Training<span class="ticker-sep"></span></div>
+    <div class="ticker-item">HIIT Classes<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Personal Training<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Yoga & Recovery<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Nutrition Plans<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Body Transformation<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Combat Sports<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Strength Training<span class="ticker-sep"></span></div>
+    <div class="ticker-item">HIIT Classes<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Personal Training<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Yoga & Recovery<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Nutrition Plans<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Body Transformation<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Combat Sports<span class="ticker-sep"></span></div>
+  </div>
+</div>
+
+<section class="section programs-section" id="programs">
+  <div class="programs-header">
+    <div><div class="sec-label">What We Offer</div><div class="sec-title">TRAINING<br/>PROGRAMS</div></div>
+    <div class="sec-sub">Every program designed by certified coaches and tailored to your fitness level — beginner to elite.</div>
+  </div>
+  <div class="programs-grid">
+    <div class="prog-card reveal">
+      <div class="prog-img-wrap">
+        <img class="prog-img" src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80&fit=crop" alt="Strength Training"/>
+        <div class="prog-overlay"></div><div class="prog-num-overlay">01</div>
+      </div>
+      <div class="prog-body">
+        <div class="prog-name">Strength & Powerlifting</div>
+        <div class="prog-desc">Progressive overload programs built to increase raw strength. Includes squat, deadlift, and bench coaching from certified strength coaches.</div>
+        <div class="prog-foot"><div class="prog-tag">3–5 days/week</div><div class="prog-arrow">→</div></div>
+      </div>
+    </div>
+    <div class="prog-card reveal">
+      <div class="prog-img-wrap">
+        <img class="prog-img" src="https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?w=600&q=80&fit=crop" alt="HIIT Training"/>
+        <div class="prog-overlay"></div><div class="prog-num-overlay">02</div>
+      </div>
+      <div class="prog-body">
+        <div class="prog-name">HIIT Fat Burn</div>
+        <div class="prog-desc">45-minute high-intensity sessions that torch calories and keep your metabolism elevated for 24hrs post-workout. Fast results guaranteed.</div>
+        <div class="prog-foot"><div class="prog-tag">5 days/week</div><div class="prog-arrow">→</div></div>
+      </div>
+    </div>
+    <div class="prog-card reveal">
+      <div class="prog-img-wrap">
+        <img class="prog-img" src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=600&q=80&fit=crop" alt="Boxing MMA"/>
+        <div class="prog-overlay"></div><div class="prog-num-overlay">03</div>
+      </div>
+      <div class="prog-body">
+        <div class="prog-name">Boxing & MMA</div>
+        <div class="prog-desc">Train like a fighter. Full-contact and non-contact boxing, kickboxing and MMA fundamentals for every level — no experience needed.</div>
+        <div class="prog-foot"><div class="prog-tag">4 days/week</div><div class="prog-arrow">→</div></div>
+      </div>
+    </div>
+    <div class="prog-card reveal">
+      <div class="prog-img-wrap">
+        <img class="prog-img" src="https://images.unsplash.com/photo-1588286840104-8957b019727f?w=600&q=80&fit=crop" alt="Yoga Recovery"/>
+        <div class="prog-overlay"></div><div class="prog-num-overlay">04</div>
+      </div>
+      <div class="prog-body">
+        <div class="prog-name">Yoga & Recovery</div>
+        <div class="prog-desc">Flexibility, balance, and mental clarity. Our certified yoga instructors guide you through Ashtanga, Hatha, and sports recovery flows.</div>
+        <div class="prog-foot"><div class="prog-tag">Daily sessions</div><div class="prog-arrow">→</div></div>
+      </div>
+    </div>
+    <div class="prog-card reveal">
+      <div class="prog-img-wrap">
+        <img class="prog-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80&fit=crop" alt="Cardio Endurance"/>
+        <div class="prog-overlay"></div><div class="prog-num-overlay">05</div>
+      </div>
+      <div class="prog-body">
+        <div class="prog-name">Cardio & Endurance</div>
+        <div class="prog-desc">Indoor cycling, rowing, and treadmill programs designed to build your aerobic base and cardiovascular fitness over 8–12 week blocks.</div>
+        <div class="prog-foot"><div class="prog-tag">6 days/week</div><div class="prog-arrow">→</div></div>
+      </div>
+    </div>
+    <div class="prog-card reveal">
+      <div class="prog-img-wrap">
+        <img class="prog-img" src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80&fit=crop" alt="Nutrition Coaching"/>
+        <div class="prog-overlay"></div><div class="prog-num-overlay">06</div>
+      </div>
+      <div class="prog-body">
+        <div class="prog-name">Nutrition Coaching</div>
+        <div class="prog-desc">Custom macro plans, weekly check-ins, and supplement guidance. Real food, real structure — no crash diets or generic meal plans.</div>
+        <div class="prog-foot"><div class="prog-tag">Online + In-person</div><div class="prog-arrow">→</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section schedule-section" id="schedule">
+  <div class="sec-label" style="color:var(--red)">Weekly Timetable</div>
+  <div class="sec-title" style="color:#fff">CLASS SCHEDULE</div>
+  <div class="schedule-grid">
+    <div><div class="day-head">MON</div><div class="class-slot highlight"><div class="class-time">6:00 AM</div><div class="class-name">HIIT Burn</div></div><div class="class-slot"><div class="class-time">8:00 AM</div><div class="class-name">Yoga Flow</div></div><div class="class-slot highlight"><div class="class-time">6:00 PM</div><div class="class-name">Strength</div></div><div class="class-slot"><div class="class-time">8:00 PM</div><div class="class-name">Boxing</div></div></div>
+    <div><div class="day-head">TUE</div><div class="class-slot"><div class="class-time">6:00 AM</div><div class="class-name">Cardio</div></div><div class="class-slot highlight"><div class="class-time">7:30 AM</div><div class="class-name">Strength</div></div><div class="class-slot"><div class="class-time">5:30 PM</div><div class="class-name">MMA</div></div><div class="class-slot highlight"><div class="class-time">7:30 PM</div><div class="class-name">HIIT Burn</div></div></div>
+    <div><div class="day-head today">WED</div><div class="class-slot highlight"><div class="class-time">5:30 AM</div><div class="class-name">Strength</div></div><div class="class-slot"><div class="class-time">8:00 AM</div><div class="class-name">Yoga Flow</div></div><div class="class-slot"><div class="class-time">6:00 PM</div><div class="class-name">Cardio</div></div><div class="class-slot highlight"><div class="class-time">8:00 PM</div><div class="class-name">Boxing</div></div></div>
+    <div><div class="day-head">THU</div><div class="class-slot"><div class="class-time">6:00 AM</div><div class="class-name">HIIT Burn</div></div><div class="class-slot highlight"><div class="class-time">8:00 AM</div><div class="class-name">Strength</div></div><div class="class-slot highlight"><div class="class-time">5:30 PM</div><div class="class-name">MMA</div></div><div class="class-slot"><div class="class-time">7:30 PM</div><div class="class-name">Yoga</div></div></div>
+    <div><div class="day-head">FRI</div><div class="class-slot highlight"><div class="class-time">6:00 AM</div><div class="class-name">HIIT Burn</div></div><div class="class-slot"><div class="class-time">8:00 AM</div><div class="class-name">Cardio</div></div><div class="class-slot"><div class="class-time">6:00 PM</div><div class="class-name">Strength</div></div><div class="class-slot highlight"><div class="class-time">8:00 PM</div><div class="class-name">Boxing</div></div></div>
+    <div><div class="day-head">SAT</div><div class="class-slot highlight"><div class="class-time">7:00 AM</div><div class="class-name">Open Gym</div></div><div class="class-slot"><div class="class-time">9:00 AM</div><div class="class-name">Yoga</div></div><div class="class-slot highlight"><div class="class-time">11:00 AM</div><div class="class-name">HIIT Burn</div></div><div class="class-slot"><div class="class-time">4:00 PM</div><div class="class-name">MMA</div></div></div>
+  </div>
+</section>
+
+<section class="section trainers-section" id="trainers">
+  <div class="sec-label">The Team</div>
+  <div class="sec-title">MEET YOUR COACHES</div>
+  <div class="trainers-grid">
+    <div class="trainer-card reveal">
+      <div class="trainer-photo-wrap">
+        <img class="trainer-photo" src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?w=600&q=80&fit=crop&crop=top" alt="Rajesh Kumar — Head Strength Coach"/>
+        <div class="trainer-exp">8 yrs exp</div>
+      </div>
+      <div class="trainer-info">
+        <div class="trainer-name">Rajesh Kumar</div>
+        <div class="trainer-role">Head Strength Coach</div>
+        <div class="trainer-bio">Former national powerlifter with 8 years coaching experience. Specializes in progressive overload programming and injury prevention. Helped 400+ members hit personal records.</div>
+        <div class="trainer-tags"><span class="trainer-tag">Powerlifting</span><span class="trainer-tag">NASM Certified</span><span class="trainer-tag">Sports Nutrition</span></div>
+      </div>
+    </div>
+    <div class="trainer-card reveal">
+      <div class="trainer-photo-wrap">
+        <img class="trainer-photo" src="https://images.unsplash.com/photo-1594381898411-846e7d193883?w=600&q=80&fit=crop&crop=top" alt="Priya Sharma — HIIT Coach"/>
+        <div class="trainer-exp">6 yrs exp</div>
+      </div>
+      <div class="trainer-info">
+        <div class="trainer-name">Priya Sharma</div>
+        <div class="trainer-role">HIIT & Combat Coach</div>
+        <div class="trainer-bio">CrossFit Level 2 and certified MMA coach. Known for high-energy classes and ability to push clients safely past their limits. Specializes in body transformation.</div>
+        <div class="trainer-tags"><span class="trainer-tag">CrossFit L2</span><span class="trainer-tag">MMA Coach</span><span class="trainer-tag">Fat Loss</span></div>
+      </div>
+    </div>
+    <div class="trainer-card reveal">
+      <div class="trainer-photo-wrap">
+        <img class="trainer-photo" src="https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=600&q=80&fit=crop&crop=top" alt="Ananya Reddy — Yoga Specialist"/>
+        <div class="trainer-exp">10 yrs exp</div>
+      </div>
+      <div class="trainer-info">
+        <div class="trainer-name">Ananya Reddy</div>
+        <div class="trainer-role">Yoga & Recovery Specialist</div>
+        <div class="trainer-bio">Trained in Mysore, certified in Ashtanga and Hatha yoga. Holds a sports therapy certification. Works with athletes on mobility, recovery, and mental balance.</div>
+        <div class="trainer-tags"><span class="trainer-tag">Ashtanga</span><span class="trainer-tag">Sports Therapy</span><span class="trainer-tag">Mobility</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section pricing-section" id="pricing">
+  <div class="sec-label">Membership</div>
+  <div class="sec-title">CHOOSE YOUR PLAN</div>
+  <div class="pricing-grid">
+    <div class="price-card reveal">
+      <div class="plan-name">Starter</div><div class="price-amt"><sup>₹</sup>999</div><div class="price-per">per month · billed monthly</div>
+      <ul class="feat-list">
+        <li class="feat-item"><span class="feat-check">✓</span>Gym floor access (6AM–10PM)</li>
+        <li class="feat-item"><span class="feat-check">✓</span>2 group classes per week</li>
+        <li class="feat-item"><span class="feat-check">✓</span>Locker room & showers</li>
+        <li class="feat-item"><span class="feat-check">✓</span>Basic fitness assessment</li>
+        <li class="feat-item"><span class="feat-x">✗</span>Personal training sessions</li>
+        <li class="feat-item"><span class="feat-x">✗</span>Nutrition consultation</li>
+      </ul>
+      <a href="tel:+918688496208" class="plan-btn plan-btn-outline">Get Started</a>
+    </div>
+    <div class="price-card hot reveal">
+      <div class="best-tag">Most Popular</div>
+      <div class="plan-name">Pro</div><div class="price-amt" style="color:var(--red)"><sup style="color:var(--red)">₹</sup>1,999</div><div class="price-per">per month · billed monthly</div>
+      <ul class="feat-list">
+        <li class="feat-item"><span class="feat-check">✓</span>Unlimited gym access</li>
+        <li class="feat-item"><span class="feat-check">✓</span>Unlimited group classes</li>
+        <li class="feat-item"><span class="feat-check">✓</span>1 PT session per week</li>
+        <li class="feat-item"><span class="feat-check">✓</span>Nutrition consultation</li>
+        <li class="feat-item"><span class="feat-check">✓</span>Progress tracking app</li>
+        <li class="feat-item"><span class="feat-check">✓</span>Guest pass (1/month)</li>
+      </ul>
+      <a href="tel:+918688496208" class="plan-btn plan-btn-filled">Get Started</a>
+    </div>
+    <div class="price-card reveal">
+      <div class="plan-name">Elite</div><div class="price-amt"><sup>₹</sup>3,499</div><div class="price-per">per month · billed monthly</div>
+      <ul class="feat-list">
+        <li class="feat-item"><span class="feat-check">✓</span>Everything in Pro</li>
+        <li class="feat-item"><span class="feat-check">✓</span>Daily PT sessions</li>
+        <li class="feat-item"><span class="feat-check">✓</span>Custom meal plan</li>
+        <li class="feat-item"><span class="feat-check">✓</span>Priority class booking</li>
+        <li class="feat-item"><span class="feat-check">✓</span>Guest passes (3/month)</li>
+        <li class="feat-item"><span class="feat-check">✓</span>Body composition analysis</li>
+      </ul>
+      <a href="tel:+918688496208" class="plan-btn plan-btn-outline">Get Started</a>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section">
+  <div class="gallery-header reveal">
+    <div class="sec-label" style="color:var(--red)">Inside K Gym</div>
+    <div class="sec-title" style="color:#fff">THE FACILITY</div>
+  </div>
+  <div class="gallery-scroll">
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=500&q=80&fit=crop" alt="Weight Room"/><div class="gallery-caption">Weight Room</div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=500&q=80&fit=crop" alt="Combat Zone"/><div class="gallery-caption">Combat Zone</div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500&q=80&fit=crop" alt="Yoga Studio"/><div class="gallery-caption">Yoga Studio</div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?w=500&q=80&fit=crop" alt="Cardio Deck"/><div class="gallery-caption">Cardio Deck</div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=80&fit=crop" alt="Nutrition Bar"/><div class="gallery-caption">Nutrition Bar</div></div>
+  </div>
+</section>
+
+<section class="section testimonials-section">
+  <div class="sec-label">Member Stories</div>
+  <div class="sec-title">REAL RESULTS, REAL PEOPLE</div>
+  <div class="t-grid">
+    <div class="t-card reveal"><div class="t-verified">✓ Verified Member</div><div class="t-stars">★★★★★</div><div class="t-body">I joined K Gym Studio with zero experience. Within 4 months I lost 14kg and completely changed my lifestyle. The coaches here genuinely care about your progress, not just your subscription.</div><div class="t-name">Arjun Mehta</div><div class="t-role">Software Engineer, Hyderabad</div><div class="t-date">Member since Jan 2024 · Lost 14kg</div></div>
+    <div class="t-card reveal"><div class="t-verified">✓ Verified Member</div><div class="t-stars">★★★★★</div><div class="t-body">The Pro plan is incredible value. I get unlimited classes, one-on-one training, and a nutrition plan all for under ₹2,000. I've tried 3 other gyms in Hyderabad and nothing comes close.</div><div class="t-name">Sneha Patel</div><div class="t-role">Doctor, Banjara Hills</div><div class="t-date">Member since Aug 2023 · 10kg muscle gain</div></div>
+    <div class="t-card reveal"><div class="t-verified">✓ Verified Member</div><div class="t-stars">★★★★★</div><div class="t-body">Ananya's yoga classes completely fixed my chronic back pain that I'd had for 2 years. The recovery-focused approach here is what separates K Gym from every other place I've been.</div><div class="t-name">Vikram Nair</div><div class="t-role">Business Owner, Jubilee Hills</div><div class="t-date">Member since Mar 2022 · Pain-free living</div></div>
+    <div class="t-card reveal"><div class="t-verified">✓ Verified Member</div><div class="t-stars">★★★★★</div><div class="t-body">Started boxing here as a stress outlet after a tough year. Now I compete at local amateur events. Priya's coaching style is intense but incredibly effective. Best thing I ever did for myself.</div><div class="t-name">Kavya Singh</div><div class="t-role">Marketing Manager, Madhapur</div><div class="t-date">Member since May 2023 · Amateur boxer</div></div>
+  </div>
+</section>
+
+<section class="location-section" id="contact">
+  <div class="loc-left">
+    <div class="sec-label">Find Us</div>
+    <div class="sec-title">VISIT K GYM STUDIO</div>
+    <div class="loc-detail">
+      <div class="loc-row">
+        <div class="loc-icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><div class="loc-label">Address</div><div class="loc-val">Plot 42, Madhapur Main Road<br/>HITEC City, Hyderabad — 500081</div></div>
+      </div>
+      <div class="loc-row">
+        <div class="loc-icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div><div class="loc-label">Hours</div><div class="loc-val">Mon–Fri: 5:30 AM – 11:00 PM<br/>Sat–Sun: 7:00 AM – 9:00 PM</div></div>
+      </div>
+      <div class="loc-row">
+        <div class="loc-icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6 19.79 19.79 0 0 1 1.6 5a2 2 0 0 1 1.99-2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17.92z"/></svg></div>
+        <div><div class="loc-label">Phone & WhatsApp</div><div class="loc-val"><a href="tel:+918688496208">+91 86884 96208</a></div></div>
+      </div>
+      <div class="loc-row">
+        <div class="loc-icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+        <div><div class="loc-label">Email</div><div class="loc-val"><a href="mailto:karthikeyanetha7@gmail.com">karthikeyanetha7@gmail.com</a></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="loc-right">
+    <img class="loc-map-img" src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=900&q=80&fit=crop" alt="HITEC City Hyderabad"/>
+    <div class="loc-map-overlay">
+      <svg class="map-pin-icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="var(--red)" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      <div class="map-area">HITEC City</div>
+      <div class="map-addr">Madhapur Main Road, Hyderabad<br/>Telangana, India — 500081</div>
+      <a href="https://maps.google.com/?q=HITEC+City+Hyderabad" target="_blank" class="map-btn">Open in Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact-form-section">
+  <div class="cf-grid">
+    <div class="cf-left">
+      <div class="sec-label" style="color:var(--red)">Get In Touch</div>
+      <div class="sec-title" style="color:#fff">SEND US A<br/>MESSAGE</div>
+      <div class="sec-sub" style="color:rgba(255,255,255,.4);margin-top:16px">Questions about membership, trial sessions, or corporate fitness plans? We reply within 2 hours.</div>
+    </div>
+    <div>
+      <form id="contactForm" class="cf-form">
+        <div class="cf-row">
+          <div class="cf-f"><label class="cf-lbl">Name</label><input class="cf-in" id="cfname" placeholder="Your name" required/></div>
+          <div class="cf-f"><label class="cf-lbl">Email</label><input class="cf-in" type="email" id="cfemail" placeholder="your@email.com" required/></div>
+        </div>
+        <div class="cf-row">
+          <div class="cf-f"><label class="cf-lbl">Phone</label><input class="cf-in" type="tel" id="cfphone" placeholder="+91 98765 43210"/></div>
+          <div class="cf-f"><label class="cf-lbl">Interest</label><input class="cf-in" id="cftopic" placeholder="e.g. Pro membership, PT sessions"/></div>
+        </div>
+        <div class="cf-f"><label class="cf-lbl">Message</label><textarea class="cf-ta" id="cfmsg" placeholder="Tell us your fitness goals and any questions..." required></textarea></div>
+        <button type="submit" class="cf-sub" id="cfBtn">Send Message →</button>
+        <div class="cf-msg" id="cfMsg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div>
+    <div class="cta-title">YOUR FIRST<br/>7 DAYS<br/>ARE FREE</div>
+    <div class="cta-sub">No credit card. No commitment. Just show up and train.<br/>Cancel anytime — but you won't want to.</div>
+  </div>
+  <div class="cta-actions">
+    <a href="tel:+918688496208" class="cta-btn-white">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6 19.79 19.79 0 0 1 1.6 5a2 2 0 0 1 1.99-2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17.92z"/></svg>
+      Call to Enroll
+    </a>
+    <a href="https://wa.me/918688496208" target="_blank" class="cta-btn-outline">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      WhatsApp Us
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo-wrap" style="margin-bottom:16px">
+        <div class="logo-icon">K</div>
+        <div class="logo-text">K GYM <span>STUDIO</span></div>
+      </div>
+      <p>Hyderabad's most results-driven fitness studio. Strength, cardio, combat and recovery — all under one roof in HITEC City.</p>
+    </div>
+    <div><div class="footer-col-title">Programs</div><ul class="footer-links"><li><a href="#programs">Strength</a></li><li><a href="#programs">HIIT</a></li><li><a href="#programs">Boxing</a></li><li><a href="#programs">Yoga</a></li><li><a href="#programs">Nutrition</a></li></ul></div>
+    <div><div class="footer-col-title">Studio</div><ul class="footer-links"><li><a href="#trainers">Our Coaches</a></li><li><a href="#schedule">Schedule</a></li><li><a href="#pricing">Membership</a></li><li><a href="#contact">Location</a></li></ul></div>
+    <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="tel:+918688496208">+91 86884 96208</a></li><li><a href="mailto:karthikeyanetha7@gmail.com">karthikeyanetha7@gmail.com</a></li><li><a href="https://wa.me/918688496208">WhatsApp</a></li><li><a href="https://linkedin.com/in/karthikeya-gurram-59209726a">LinkedIn</a></li><li><a href="https://github.com/karthikeyanetha1">GitHub</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 K Gym Studio. All rights reserved.<br/>Website by <a href="https://codewithkweb.com" target="_blank">CodeWithK</a> · karthikeyanetha7@gmail.com · +91 86884 96208</div>
+    <div class="footer-social">
+      <a href="https://wa.me/918688496208" class="social-link" title="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>
+      <a href="mailto:karthikeyanetha7@gmail.com" class="social-link" title="Email"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+      <a href="https://linkedin.com/in/karthikeya-gurram-59209726a" target="_blank" class="social-link" title="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <a href="https://github.com/karthikeyanetha1" target="_blank" class="social-link" title="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+emailjs.init("3tdUNyiRYlYZmRys7");
+document.getElementById('contactForm').addEventListener('submit',async function(e){
+  e.preventDefault();
+  const btn=document.getElementById('cfBtn'),msg=document.getElementById('cfMsg');
+  btn.disabled=true;btn.textContent='Sending...';
+  try{
+    await emailjs.send('service_pwkfbys','template_clvsbvr',{from_name:document.getElementById('cfname').value,from_email:document.getElementById('cfemail').value,phone:document.getElementById('cfphone').value,website:'K Gym Studio · '+document.getElementById('cftopic').value,message:document.getElementById('cfmsg').value});
+    msg.className='cf-msg ok';msg.textContent='✓ Message sent! We will call you back within 2 hours.';msg.style.display='block';this.reset();
+  }catch(err){msg.className='cf-msg err';msg.textContent='Failed to send. Please WhatsApp us at +91 86884 96208';msg.style.display='block';}
+  btn.disabled=false;btn.textContent='Send Message →';
+});
+const obs=new IntersectionObserver(e=>{e.forEach((en,i)=>{if(en.isIntersecting){setTimeout(()=>en.target.classList.add('show'),i*80);obs.unobserve(en.target);}})},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
