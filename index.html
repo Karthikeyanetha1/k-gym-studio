@@ -3,760 +3,638 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Cartly — Shop Smart, Live Better</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<title>K Gym Studio | Hyderabad's Premium Fitness Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --black:#0c0c0c;--white:#fff;--off:#f7f7f5;--gray:#f0f0ee;
-  --border:#e5e5e2;--text:#141414;--muted:#888;
-  --accent:#ff4500;--accent-dark:#d63a00;--green:#16a34a;--yellow:#f59e0b;
-}
+:root{--red:#e63124;--dark:#111;--charcoal:#1c1c1c;--offwhite:#f7f5f2;--warm:#f0ece4;--text:#2a2a2a;--muted:#888;--border:#e0dbd3}
 html{scroll-behavior:smooth}
-body{font-family:'Manrope',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden}
-.topbar{background:var(--black);color:rgba(255,255,255,0.6);padding:8px 60px;display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:500}
-.topbar-cta{color:var(--accent);font-weight:700}
-.topbar-right{display:flex;gap:20px}
-.topbar-right a{color:rgba(255,255,255,0.55);text-decoration:none;transition:color .2s}
-.topbar-right a:hover{color:#fff}
-nav{position:sticky;top:0;z-index:300;background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 60px;height:64px;display:flex;align-items:center;gap:24px}
-.nav-logo{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:var(--black);letter-spacing:-1px;text-decoration:none;flex-shrink:0}
-.nav-logo span{color:var(--accent)}
-.nav-cats{display:flex;gap:0;list-style:none;border-left:1px solid var(--border);padding-left:20px;margin-left:4px}
-.nav-cats a{font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;padding:7px 14px;border-radius:6px;transition:all .2s;white-space:nowrap}
-.nav-cats a:hover,.nav-cats a.active{color:var(--text);background:var(--gray)}
-.nav-search{flex:1;display:flex;align-items:center;gap:8px;background:var(--gray);border-radius:8px;padding:0 14px;height:38px;border:1.5px solid transparent;transition:all .2s}
-.nav-search:focus-within{border-color:var(--accent);background:#fff}
-.nav-search input{background:none;border:none;outline:none;font-size:13px;font-family:'Manrope',sans-serif;color:var(--text);flex:1}
-.nav-search input::placeholder{color:var(--muted)}
-.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0}
-.nav-icon{width:38px;height:38px;border-radius:8px;background:var(--gray);display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;text-decoration:none;transition:all .2s;position:relative;border:none}
-.nav-icon:hover{background:var(--border)}
-.cart-badge{position:absolute;top:-5px;right:-5px;min-width:18px;height:18px;background:var(--accent);border-radius:9px;font-size:10px;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:center;padding:0 4px;border:2px solid #fff;transition:transform .2s}
-.cart-badge.bump{animation:bump .3s ease}
-@keyframes bump{0%,100%{transform:scale(1)}50%{transform:scale(1.5)}}
+body{font-family:'Lato',sans-serif;background:var(--offwhite);color:var(--text);overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:70px;background:rgba(17,17,17,0.97);border-bottom:1px solid rgba(255,255,255,0.06)}
+.logo-wrap{display:flex;align-items:center;gap:12px}
+.logo-icon{width:40px;height:40px;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:#fff}
+.logo-text{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;letter-spacing:2px;color:#fff;text-transform:uppercase}
+.logo-text span{color:var(--red)}
+.nav-menu{display:flex;gap:32px;list-style:none}
+.nav-menu a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;transition:color .2s}
+.nav-menu a:hover{color:#fff}
+.nav-right{display:flex;align-items:center;gap:20px}
+.nav-phone{color:rgba(255,255,255,0.5);font-size:12px;font-weight:700;letter-spacing:1px;text-decoration:none;display:flex;align-items:center;gap:6px}
+.nav-phone:hover{color:var(--red)}
+.nav-btn{background:var(--red);color:#fff;padding:10px 24px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:all .2s}
+.nav-btn:hover{background:#c9271f;transform:translateY(-1px)}
 
 /* HERO */
-.hero{background:var(--black);display:grid;grid-template-columns:1fr 460px;min-height:500px;position:relative;overflow:hidden}
-.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 65% 50%,rgba(255,69,0,0.09) 0%,transparent 65%)}
-.hero-left{display:flex;flex-direction:column;justify-content:center;padding:72px 60px;position:relative;z-index:1}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,69,0,0.12);border:1px solid rgba(255,69,0,0.25);padding:5px 14px;border-radius:20px;width:fit-content;margin-bottom:22px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent)}
-.hero h1{font-family:'Syne',sans-serif;font-size:clamp(44px,5.5vw,80px);font-weight:800;line-height:1.0;color:#fff;letter-spacing:-2px;margin-bottom:16px}
-.hero h1 em{font-style:normal;color:var(--accent)}
-.hero-sub{font-size:15px;color:rgba(255,255,255,0.38);line-height:1.8;max-width:380px;margin-bottom:32px}
-.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
-.btn-orange{background:var(--accent);color:#fff;padding:13px 28px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
-.btn-orange:hover{background:var(--accent-dark);transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,69,0,0.3)}
-.btn-ghost-w{border:1.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.65);padding:13px 24px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all .2s;display:inline-block}
-.btn-ghost-w:hover{border-color:rgba(255,255,255,0.4);color:#fff}
-.hero-right{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;padding:40px 32px}
-.hero-prod-stack{display:flex;flex-direction:column;gap:10px;width:100%}
-.hps-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;transition:all .3s;cursor:pointer}
-.hps-card:hover{background:rgba(255,69,0,0.1);border-color:rgba(255,69,0,0.25);transform:translateX(6px)}
-.hps-emoji{font-size:28px;width:48px;height:48px;border-radius:8px;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.hps-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#fff;margin-bottom:3px}
-.hps-price{font-size:12px;color:var(--accent);font-weight:700}
-.hps-old{font-size:11px;color:rgba(255,255,255,0.25);text-decoration:line-through;margin-left:5px}
-.hps-off{background:var(--accent);color:#fff;font-size:10px;font-weight:700;padding:3px 7px;border-radius:4px;flex-shrink:0;margin-left:auto}
-.hps-add{width:30px;height:30px;background:rgba(255,255,255,0.08);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;flex-shrink:0;transition:all .2s;border:none;cursor:pointer}
-.hps-add:hover{background:var(--accent)}
+.hero{min-height:100vh;padding-top:70px;display:grid;grid-template-columns:55% 45%;background:var(--dark);position:relative;overflow:hidden}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 60px 80px 56px;position:relative;z-index:1}
+.hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.eyebrow-line{width:32px;height:2px;background:var(--red)}
+.eyebrow-text{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red)}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(64px,7.5vw,104px);font-weight:900;line-height:.92;color:#fff;text-transform:uppercase;letter-spacing:-1px;margin-bottom:24px}
+.hero h1 .outline{-webkit-text-stroke:2px rgba(255,255,255,0.25);color:transparent}
+.hero h1 .accent{color:var(--red)}
+.hero-sub{font-size:16px;color:rgba(255,255,255,0.45);line-height:1.8;max-width:420px;margin-bottom:44px;font-weight:300}
+.hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:64px}
+.btn-red{background:var(--red);color:#fff;padding:15px 36px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;display:inline-block;transition:all .2s}
+.btn-red:hover{background:#c9271f;transform:translateY(-2px);box-shadow:0 8px 24px rgba(230,49,36,0.3)}
+.btn-ghost{border:1.5px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);padding:15px 32px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;display:inline-block;transition:all .2s}
+.btn-ghost:hover{border-color:#fff;color:#fff}
+.hero-meta{display:flex;gap:48px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.08)}
+.hero-meta-num{font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:900;color:#fff;line-height:1}
+.hero-meta-num span{color:var(--red)}
+.hero-meta-label{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:1.5px;text-transform:uppercase;margin-top:4px}
+.hero-right{position:relative;overflow:hidden}
+.hero-img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:.75}
+.hero-badge{position:absolute;top:40px;left:40px;width:110px;height:110px;background:var(--red);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;animation:spin-slow 12s linear infinite;z-index:2}
+@keyframes spin-slow{to{transform:rotate(360deg)}}
+.badge-inner{display:flex;flex-direction:column;align-items:center;animation:spin-slow 12s linear infinite reverse}
+.badge-num{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;color:#fff;line-height:1}
+.badge-text{font-size:9px;font-weight:700;letter-spacing:1px;color:rgba(255,255,255,0.8);text-transform:uppercase}
+.hero-bottom-strip{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);padding:24px 32px;border-top:1px solid rgba(255,255,255,0.06);z-index:2}
+.strip-label{font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.strip-tags{display:flex;gap:8px;flex-wrap:wrap}
+.strip-tag{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.5)}
+.strip-tag.active{border-color:var(--red);color:var(--red)}
 
-/* TRUST */
-.trust-bar{background:var(--gray);padding:18px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-bottom:1px solid var(--border)}
-.trust-item{display:flex;align-items:center;gap:10px}
-.trust-icon{font-size:20px}
-.trust-txt strong{display:block;font-size:13px;font-weight:700}
-.trust-txt span{font-size:11px;color:var(--muted)}
+/* TICKER */
+.ticker{background:var(--red);padding:14px 0;overflow:hidden}
+.ticker-track{display:flex;gap:0;white-space:nowrap;animation:ticker 25s linear infinite}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker-item{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#fff;padding:0 40px;display:flex;align-items:center;gap:40px;flex-shrink:0}
+.ticker-sep{width:4px;height:4px;background:rgba(255,255,255,0.4);border-radius:50%;flex-shrink:0}
 
-/* SECTIONS */
-.section{padding:64px 60px}
-.sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;flex-wrap:wrap;gap:12px}
-.sec-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
-.sec-title{font-family:'Syne',sans-serif;font-size:clamp(26px,3.5vw,38px);font-weight:800;letter-spacing:-1px;line-height:1.1}
-.see-all{font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:4px;border-bottom:1.5px solid var(--border);padding-bottom:2px;transition:all .2s}
-.see-all:hover{color:var(--accent);border-color:var(--accent)}
+/* SECTION BASE */
+.section{padding:100px 56px}
+.sec-label{display:flex;align-items:center;gap:14px;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.sec-label::before{content:'';width:28px;height:2px;background:var(--red)}
+.sec-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(42px,5vw,68px);font-weight:900;text-transform:uppercase;line-height:.95;letter-spacing:-.5px}
+.sec-sub{font-size:15px;color:var(--muted);line-height:1.8;max-width:480px;margin-top:16px}
 
-/* CATS */
-.cats-section{background:var(--white);padding:48px 60px}
-.cats-scroll{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
-.cats-scroll::-webkit-scrollbar{display:none}
-.cat-pill{display:flex;flex-direction:column;align-items:center;gap:7px;background:var(--gray);border:1.5px solid var(--border);border-radius:12px;padding:18px 24px;cursor:pointer;flex-shrink:0;transition:all .25s;text-decoration:none;min-width:100px}
-.cat-pill:hover,.cat-pill.active{background:var(--black);border-color:var(--black);transform:translateY(-3px)}
-.cat-pill:hover .cpname,.cat-pill.active .cpname{color:#fff}
-.cat-pill:hover .cpcnt,.cat-pill.active .cpcnt{color:rgba(255,255,255,0.4)}
-.cpemoji{font-size:26px}
-.cpname{font-size:12px;font-weight:700;color:var(--text);transition:color .2s;white-space:nowrap}
-.cpcnt{font-size:10px;color:var(--muted);transition:color .2s}
+/* PROGRAMS */
+.programs-section{background:var(--offwhite)}
+.programs-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;flex-wrap:wrap;gap:24px}
+.programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.prog-card{background:#fff;overflow:hidden;position:relative;cursor:pointer;transition:all .3s}
+.prog-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.1)}
+.prog-img-wrap{height:200px;overflow:hidden;position:relative}
+.prog-img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.prog-card:hover .prog-img{transform:scale(1.07)}
+.prog-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,rgba(0,0,0,.1) 60%)}
+.prog-num-overlay{position:absolute;top:14px;right:16px;font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:900;color:rgba(255,255,255,0.25);line-height:1}
+.prog-body{padding:28px 28px 32px}
+.prog-name{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.prog-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:18px}
+.prog-foot{display:flex;align-items:center;justify-content:space-between}
+.prog-tag{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;background:var(--warm);color:#666}
+.prog-arrow{font-size:20px;color:var(--red);font-weight:900;transition:transform .2s}
+.prog-card:hover .prog-arrow{transform:translateX(5px)}
 
-/* PRODUCTS */
-.products-section{background:var(--off)}
-.filter-bar{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap;align-items:center}
-.filter-btn{padding:7px 16px;border-radius:6px;font-size:12px;font-weight:700;border:1.5px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;transition:all .2s;font-family:'Manrope',sans-serif}
-.filter-btn:hover,.filter-btn.active{background:var(--black);border-color:var(--black);color:#fff}
-.sort-sel{margin-left:auto;padding:7px 12px;border-radius:6px;font-size:12px;font-weight:600;border:1.5px solid var(--border);background:#fff;color:var(--text);cursor:pointer;font-family:'Manrope',sans-serif;outline:none}
-.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.prod-card{background:#fff;border-radius:12px;border:1.5px solid var(--border);overflow:hidden;transition:all .3s;cursor:pointer}
-.prod-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.09)}
-.prod-img{height:185px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.prod-emoji{font-size:62px;transition:transform .3s}
-.prod-card:hover .prod-emoji{transform:scale(1.1)}
-.pi1{background:linear-gradient(135deg,#fff8f5,#ffe0d0)}
-.pi2{background:linear-gradient(135deg,#f5f8ff,#d8e4ff)}
-.pi3{background:linear-gradient(135deg,#f5fff8,#d0fde0)}
-.pi4{background:linear-gradient(135deg,#fffcf0,#ffe8b0)}
-.pi5{background:linear-gradient(135deg,#fdf5ff,#e8c8ff)}
-.pi6{background:linear-gradient(135deg,#f0faff,#c0e8ff)}
-.pi7{background:linear-gradient(135deg,#fff5f5,#ffc8c8)}
-.pi8{background:linear-gradient(135deg,#f5fff5,#c0ffc8)}
-.pi9{background:linear-gradient(135deg,#fdfff0,#e8ffa8)}
-.pi10{background:linear-gradient(135deg,#fff5fd,#ffc8f0)}
-.pi11{background:linear-gradient(135deg,#f5f5ff,#c8c8ff)}
-.pi12{background:linear-gradient(135deg,#f0f8ff,#b8dcff)}
-.pbadge{position:absolute;top:10px;left:10px;font-size:10px;font-weight:700;letter-spacing:.5px;padding:3px 8px;border-radius:4px}
-.b-sale{background:var(--accent);color:#fff}
-.b-new{background:var(--black);color:#fff}
-.b-hot{background:var(--yellow);color:#fff}
-.b-best{background:var(--green);color:#fff}
-.pwish{position:absolute;top:10px;right:10px;width:28px;height:28px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.1);transition:all .2s;border:none}
-.pwish:hover{transform:scale(1.15)}
-.pwish.liked{background:#fff0ee}
-.prod-info{padding:12px 14px 16px}
-.pcat{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
-.pname{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;line-height:1.3;margin-bottom:7px;color:var(--text)}
-.prating{display:flex;align-items:center;gap:5px;margin-bottom:9px}
-.pstars{font-size:11px;color:var(--yellow);letter-spacing:1px}
-.prc{font-size:11px;color:var(--muted)}
-.pfooter{display:flex;align-items:center;justify-content:space-between}
-.pprice{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--text)}
-.pold{font-size:12px;color:var(--muted);text-decoration:line-through;margin-left:4px}
-.psave{font-size:10px;font-weight:700;color:var(--green);display:block;margin-top:2px}
-.atc{background:var(--black);color:#fff;border:none;width:34px;height:34px;border-radius:8px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
-.atc:hover{background:var(--accent);transform:scale(1.08)}
-.atc.added{background:var(--green)}
+/* SCHEDULE */
+.schedule-section{background:var(--dark)}
+.schedule-section .sec-title{color:#fff}
+.schedule-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:2px;margin-top:56px}
+.day-head{background:var(--charcoal);padding:16px 12px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:2px}
+.day-head.today{background:var(--red);color:#fff}
+.class-slot{background:rgba(255,255,255,0.03);padding:14px 10px;margin-bottom:2px;text-align:center;transition:background .2s;cursor:pointer}
+.class-slot:hover{background:rgba(230,49,36,.12)}
+.class-time{font-size:10px;font-weight:700;color:rgba(255,255,255,0.25);letter-spacing:1px;margin-bottom:4px}
+.class-name{font-size:11px;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:.5px}
+.class-slot.highlight .class-name{color:var(--red)}
+.class-slot.highlight{background:rgba(230,49,36,.08);border-left:2px solid var(--red)}
 
-/* CART SIDEBAR */
-.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:400;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px)}
-.cart-overlay.open{opacity:1;pointer-events:all}
-.cart-sidebar{position:fixed;top:0;right:0;bottom:0;width:400px;background:#fff;z-index:401;transform:translateX(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,0.15)}
-.cart-sidebar.open{transform:translateX(0)}
-.cart-hdr{padding:18px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-.cart-hdr-left{display:flex;align-items:center;gap:10px}
-.cart-title{font-family:'Syne',sans-serif;font-size:19px;font-weight:800}
-.cart-cnt{background:var(--accent);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px}
-.cart-cls{width:34px;height:34px;border-radius:7px;background:var(--gray);border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .2s}
-.cart-cls:hover{background:var(--border)}
-.cart-body{flex:1;overflow-y:auto;padding:18px 22px}
-.cart-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;text-align:center;padding:40px 0}
-.ce-icon{font-size:56px;opacity:.25}
-.ce-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--muted)}
-.ce-sub{font-size:13px;color:var(--muted)}
-.cart-items-list{display:flex;flex-direction:column;gap:0}
-.cart-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--border);animation:cislide .3s ease}
-@keyframes cislide{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:translateX(0)}}
-.ci-thumb{width:68px;height:68px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:30px;flex-shrink:0;background:var(--gray)}
-.ci-det{flex:1;min-width:0}
-.ci-n{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;margin-bottom:3px;line-height:1.3}
-.ci-var{font-size:11px;color:var(--muted);margin-bottom:8px}
-.ci-ctrl{display:flex;align-items:center;gap:8px}
-.qty-box{display:flex;align-items:center;border:1.5px solid var(--border);border-radius:7px;overflow:hidden}
-.qty-btn{width:28px;height:28px;border:none;background:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;font-weight:700;color:var(--text)}
-.qty-btn:hover{background:var(--gray)}
-.qty-num{width:30px;text-align:center;font-size:13px;font-weight:700;background:#fff;border:none;border-left:1px solid var(--border);border-right:1px solid var(--border)}
-.ci-del{font-size:12px;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;padding:0;transition:color .2s;text-decoration:underline}
-.ci-del:hover{color:#e00}
-.ci-p{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;flex-shrink:0}
-.cart-ftr{padding:18px 22px;border-top:1px solid var(--border);flex-shrink:0;background:#fff}
-.coupon-row{display:flex;gap:8px;margin-bottom:14px}
-.coupon-in{flex:1;padding:10px 12px;border:1.5px solid var(--border);border-radius:7px;font-size:13px;font-family:'Manrope',sans-serif;outline:none;transition:border-color .2s}
-.coupon-in:focus{border-color:var(--accent)}
-.coupon-btn{background:var(--gray);border:1.5px solid var(--border);padding:10px 14px;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Manrope',sans-serif}
-.coupon-btn:hover{background:var(--border)}
-.coupon-ok{font-size:12px;font-weight:600;color:var(--green);margin-bottom:10px;display:none}
-.totals{}
-.t-row{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;color:var(--muted)}
-.t-row.disc{color:var(--green);font-weight:600}
-.t-row.total{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--text);padding-top:10px;margin-top:6px;border-top:2px solid var(--border)}
-.checkout-btn{display:block;width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Manrope',sans-serif;margin-top:14px}
-.checkout-btn:hover{background:var(--accent-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,69,0,0.3)}
-.cart-secure{text-align:center;font-size:11px;color:var(--muted);margin-top:8px;display:flex;align-items:center;justify-content:center;gap:4px}
+/* TRAINERS */
+.trainers-section{background:var(--warm)}
+.trainers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:56px}
+.trainer-card{background:#fff;overflow:hidden;transition:transform .3s}
+.trainer-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.12)}
+.trainer-photo{width:100%;height:300px;object-fit:cover;object-position:top;display:block;transition:transform .5s}
+.trainer-card:hover .trainer-photo{transform:scale(1.04)}
+.trainer-exp{position:absolute;top:16px;right:16px;background:var(--red);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;padding:4px 10px;text-transform:uppercase}
+.trainer-photo-wrap{position:relative;overflow:hidden}
+.trainer-info{padding:24px 28px 28px}
+.trainer-name{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.trainer-role{font-size:11px;font-weight:700;color:var(--red);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px}
+.trainer-bio{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px}
+.trainer-tags{display:flex;gap:6px;flex-wrap:wrap}
+.trainer-tag{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;background:var(--warm);color:#555}
 
-/* DEALS */
-.deals-section{background:#fff}
-.deals-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.deal-card{border:1.5px solid var(--border);border-radius:12px;overflow:hidden;transition:all .3s;cursor:pointer;background:#fff}
-.deal-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.08)}
-.deal-img{height:145px;display:flex;align-items:center;justify-content:center;font-size:50px}
-.deal-body{padding:14px 14px 16px}
-.deal-timer{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px;display:flex;align-items:center;gap:5px}
-.deal-n{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;margin-bottom:9px;line-height:1.3}
-.deal-bar-wrap{background:var(--gray);border-radius:3px;height:4px;margin-bottom:5px;overflow:hidden}
-.deal-bar{height:4px;border-radius:3px;background:var(--accent)}
-.deal-sold{font-size:10px;color:var(--muted);margin-bottom:9px}
-.deal-foot{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.deal-p{font-family:'Syne',sans-serif;font-size:16px;font-weight:800}
-.deal-sv{font-size:11px;font-weight:700;color:var(--green)}
-.grab-btn{width:100%;padding:9px;background:var(--accent);color:#fff;border:none;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Manrope',sans-serif}
-.grab-btn:hover{background:var(--accent-dark)}
+/* PRICING */
+.pricing-section{background:var(--offwhite)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:56px}
+.price-card{padding:52px 36px;background:#fff;position:relative;transition:all .3s}
+.price-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.08)}
+.price-card.hot{background:var(--dark)}
+.price-card.hot .plan-name,.price-card.hot .feat-item{color:rgba(255,255,255,.65)}
+.price-card.hot .price-per{color:rgba(255,255,255,.35)}
+.best-tag{position:absolute;top:0;right:0;background:var(--red);color:#fff;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 16px}
+.plan-name{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:28px}
+.price-amt{font-family:'Barlow Condensed',sans-serif;font-size:72px;font-weight:900;line-height:1;color:var(--dark);margin-bottom:2px}
+.price-card.hot .price-amt{color:#fff}
+.price-amt sup{font-size:28px;vertical-align:top;margin-top:12px;margin-right:2px}
+.price-per{font-size:13px;color:var(--muted);margin-bottom:36px}
+.feat-list{list-style:none;margin-bottom:44px;display:flex;flex-direction:column;gap:12px}
+.feat-item{font-size:14px;color:var(--text);display:flex;align-items:center;gap:12px}
+.feat-check{width:18px;height:18px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;color:#fff;font-weight:900}
+.feat-x{width:18px;height:18px;background:var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;color:#aaa}
+.price-card.hot .feat-check{background:#fff;color:var(--red)}
+.plan-btn{display:block;text-align:center;padding:15px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all .2s;cursor:pointer;border:none;width:100%;font-family:'Lato',sans-serif}
+.plan-btn-outline{border:2px solid var(--dark);color:var(--dark);background:transparent}
+.plan-btn-outline:hover{background:var(--dark);color:#fff}
+.plan-btn-filled{background:var(--red);color:#fff}
+.plan-btn-filled:hover{background:#c9271f}
+
+/* GALLERY */
+.gallery-section{background:var(--dark);padding:100px 0}
+.gallery-header{padding:0 56px;margin-bottom:56px}
+.gallery-header .sec-title{color:#fff}
+.gallery-scroll{display:flex;gap:3px;overflow-x:auto;padding:0 56px;scrollbar-width:none}
+.gallery-scroll::-webkit-scrollbar{display:none}
+.gallery-item{flex-shrink:0;width:300px;height:360px;position:relative;overflow:hidden}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.gallery-item:hover img{transform:scale(1.06)}
+.gallery-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent);padding:32px 20px 20px;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#fff}
 
 /* TESTIMONIALS */
-.testi-section{background:var(--off)}
-.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.t-card{background:#fff;border-radius:12px;padding:22px;border:1.5px solid var(--border);transition:all .3s}
-.t-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 12px 28px rgba(255,69,0,0.08)}
-.tstars{color:var(--yellow);font-size:13px;margin-bottom:10px}
-.ttext{font-size:13px;line-height:1.85;color:#555;margin-bottom:14px;font-style:italic}
-.tuser{display:flex;align-items:center;gap:10px}
-.tav{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-.ta1{background:#ffe8df}.ta2{background:#dfe8ff}.ta3{background:#dffee8}
-.tuname{font-weight:700;font-size:13px}
-.tumeta{font-size:11px;color:var(--muted)}
-.ttag{margin-left:auto;background:rgba(22,163,74,.08);color:var(--green);font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px}
-
-/* NEWSLETTER */
-.nl-section{background:var(--black);padding:64px 60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.nl-title{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:#fff;letter-spacing:-1px;margin-bottom:8px}
-.nl-sub{font-size:14px;color:rgba(255,255,255,.35);line-height:1.8}
-.nl-form{display:flex;gap:10px}
-.nl-in{flex:1;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.1);color:#fff;padding:12px 14px;font-size:13px;border-radius:8px;outline:none;font-family:'Manrope',sans-serif;transition:border-color .2s}
-.nl-in:focus{border-color:var(--accent)}
-.nl-in::placeholder{color:rgba(255,255,255,.25)}
-.nl-btn{background:var(--accent);color:#fff;padding:12px 22px;border-radius:8px;font-size:13px;font-weight:700;border:none;cursor:pointer;white-space:nowrap;transition:all .2s;font-family:'Manrope',sans-serif}
-.nl-btn:hover{background:var(--accent-dark)}
+.testimonials-section{background:var(--warm)}
+.t-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;margin-top:56px}
+.t-card{background:#fff;padding:44px 36px;position:relative;cursor:default;transition:all .3s}
+.t-card:hover{background:var(--dark)}
+.t-card:hover .t-body,.t-card:hover .t-name{color:#fff}
+.t-card:hover .t-role,.t-card:hover .t-date{color:rgba(255,255,255,.35)}
+.t-stars{color:var(--red);font-size:14px;letter-spacing:2px;margin-bottom:20px}
+.t-body{font-size:14px;line-height:1.85;color:var(--text);margin-bottom:28px;font-style:italic;transition:color .3s}
+.t-body::before{content:'\201C';font-family:'Barlow Condensed',sans-serif;font-size:48px;color:var(--red);line-height:.5;display:block;margin-bottom:8px}
+.t-name{font-weight:700;font-size:14px;margin-bottom:2px;transition:color .3s}
+.t-role{font-size:12px;color:var(--muted);transition:color .3s}
+.t-date{font-size:11px;color:#bbb;margin-top:2px;transition:color .3s}
+.t-verified{position:absolute;top:24px;right:24px;background:rgba(0,128,0,.08);color:green;font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 8px;border-radius:2px}
 
 /* CONTACT */
-.contact-section{background:var(--off);padding:64px 60px;display:grid;grid-template-columns:1fr 1fr;gap:56px}
-.contact-cards{display:flex;flex-direction:column;gap:12px;margin-top:28px}
-.c-card{background:#fff;border-radius:12px;padding:16px 20px;display:flex;gap:12px;align-items:center;border:1.5px solid var(--border);text-decoration:none;color:var(--text);transition:all .2s}
-.c-card:hover{border-color:var(--accent);transform:translateX(4px)}
-.c-icon{width:40px;height:40px;background:var(--gray);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.c-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
-.c-val{font-size:13px;font-weight:600}
-.cf-wrap{background:#fff;border-radius:14px;padding:32px;border:1.5px solid var(--border)}
-.cf-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;margin-bottom:22px}
-.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
-.cf-field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
-.cf-label{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
-.cf-in,.cf-ta,.cf-sel{background:var(--off);border:1.5px solid var(--border);color:var(--text);padding:10px 12px;font-size:13px;font-family:'Manrope',sans-serif;border-radius:7px;outline:none;transition:all .2s}
-.cf-in:focus,.cf-ta:focus,.cf-sel:focus{border-color:var(--accent);background:#fff}
-.cf-ta{resize:vertical;min-height:95px}
-.cf-sub{width:100%;padding:12px;background:var(--black);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Manrope',sans-serif}
-.cf-sub:hover{background:var(--accent)}
-.cf-sub:disabled{opacity:.6;cursor:not-allowed}
-.cf-msg{margin-top:10px;padding:10px 12px;border-radius:7px;font-size:13px;font-weight:600;display:none}
-.cf-msg.ok{background:rgba(22,163,74,.08);color:var(--green);border:1px solid rgba(22,163,74,.2)}
-.cf-msg.err{background:rgba(255,69,0,.08);color:var(--accent);border:1px solid rgba(255,69,0,.2)}
+.location-section{background:var(--offwhite);display:grid;grid-template-columns:1fr 1fr}
+.loc-left{padding:100px 56px;display:flex;flex-direction:column;justify-content:center}
+.loc-detail{margin-top:40px;display:flex;flex-direction:column;gap:0}
+.loc-row{display:flex;gap:18px;align-items:flex-start;padding:22px 0;border-bottom:1px solid var(--border)}
+.loc-row:last-child{border-bottom:none}
+.loc-icon-box{width:44px;height:44px;background:var(--dark);border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff}
+.loc-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.loc-val{font-size:14px;font-weight:700;color:var(--text);line-height:1.5}
+.loc-val a{color:var(--text);text-decoration:none}
+.loc-val a:hover{color:var(--red)}
+.loc-right{position:relative;overflow:hidden}
+.loc-map-img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.3)}
+.loc-map-overlay{position:absolute;inset:0;background:rgba(0,0,0,.45);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:40px}
+.map-pin-icon{color:#fff}
+.map-area{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:700;color:#fff;letter-spacing:1px;text-transform:uppercase;text-align:center}
+.map-addr{font-size:13px;color:rgba(255,255,255,.6);line-height:1.6;text-align:center}
+.map-btn{display:inline-block;background:var(--red);color:#fff;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:12px 28px;text-decoration:none;transition:all .2s}
+.map-btn:hover{background:#c9271f}
+
+/* CTA */
+.cta-section{background:var(--red);padding:100px 56px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:60px}
+.cta-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(48px,6vw,88px);font-weight:900;text-transform:uppercase;line-height:.92;color:#fff;letter-spacing:-1px}
+.cta-sub{color:rgba(255,255,255,.65);font-size:16px;margin-top:16px;line-height:1.7}
+.cta-actions{display:flex;flex-direction:column;gap:12px;align-items:flex-end;flex-shrink:0}
+.cta-btn-white{background:#fff;color:var(--red);padding:16px 40px;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:all .2s;display:flex;align-items:center;gap:9px}
+.cta-btn-white:hover{background:var(--dark);color:#fff}
+.cta-btn-outline{border:2px solid rgba(255,255,255,.4);color:#fff;padding:14px 40px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:all .2s;display:flex;align-items:center;gap:9px}
+.cta-btn-outline:hover{border-color:#fff}
 
 /* FOOTER */
-footer{background:var(--black);padding:56px 60px 28px}
-.ft{display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;gap:44px;margin-bottom:44px}
-.ft-logo{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:#fff;letter-spacing:-1px;margin-bottom:10px}
-.ft-logo span{color:var(--accent)}
-.ft-desc{font-size:13px;color:rgba(255,255,255,.22);line-height:1.8;max-width:220px;margin-bottom:18px}
-.ft-soc{display:flex;gap:7px}
-.ft-soc a{width:32px;height:32px;border-radius:7px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:14px;text-decoration:none;transition:all .2s}
-.ft-soc a:hover{background:var(--accent)}
-.ft-col-t{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:16px}
-.ft-lnks{list-style:none;display:flex;flex-direction:column;gap:9px}
-.ft-lnks a{font-size:13px;color:rgba(255,255,255,.22);text-decoration:none;transition:color .2s}
-.ft-lnks a:hover{color:#fff}
-.ft-bot{display:flex;justify-content:space-between;align-items:center;padding-top:22px;border-top:1px solid rgba(255,255,255,.06);flex-wrap:wrap;gap:10px}
-.ft-copy{font-size:12px;color:rgba(255,255,255,.16);line-height:1.7}
-.ft-copy a{color:var(--accent);text-decoration:none}
-.ft-pay{display:flex;gap:5px}
-.ft-pay span{background:rgba(255,255,255,.06);color:rgba(255,255,255,.28);font-size:11px;font-weight:600;padding:3px 9px;border-radius:4px}
+footer{background:#0a0a0a;padding:64px 56px 32px;border-top:1px solid rgba(255,255,255,.04)}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
+.footer-brand .logo-wrap{margin-bottom:20px}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,.3);line-height:1.8;max-width:260px}
+.footer-col-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:20px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:#fff}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;border-top:1px solid rgba(255,255,255,.06);flex-wrap:wrap;gap:16px}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.2);line-height:1.6}
+.footer-copy a{color:var(--red);text-decoration:none}
+.footer-social{display:flex;gap:10px}
+.social-link{width:36px;height:36px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .2s;color:rgba(255,255,255,.5);border-radius:4px}
+.social-link:hover{background:var(--red);color:#fff;border-color:var(--red)}
 
-/* MODAL */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:500;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
-.modal-overlay.open{display:flex}
-.modal{background:#fff;border-radius:16px;padding:36px;max-width:440px;width:90%;animation:popIn .3s ease}
-@keyframes popIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
-.modal-icon{font-size:52px;text-align:center;margin-bottom:14px}
-.modal-title{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;text-align:center;margin-bottom:8px}
-.modal-sub{font-size:13px;color:var(--muted);text-align:center;line-height:1.7;margin-bottom:22px}
-.modal-oid{background:var(--gray);border-radius:8px;padding:13px;text-align:center;font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--accent);letter-spacing:2px;margin-bottom:18px}
-.modal-close{width:100%;padding:13px;background:var(--black);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .2s}
-.modal-close:hover{background:var(--accent)}
+/* CONTACT FORM */
+.contact-form-section{background:var(--dark);padding:100px 56px}
+.cf-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.cf-left .sec-title{color:#fff}
+.cf-left .sec-sub{color:rgba(255,255,255,.4)}
+.cf-form{display:flex;flex-direction:column;gap:14px}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cf-f{display:flex;flex-direction:column;gap:6px}
+.cf-lbl{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.cf-in,.cf-ta{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff;padding:12px 14px;font-size:14px;font-family:'Lato',sans-serif;outline:none;transition:border-color .2s;border-radius:2px}
+.cf-in:focus,.cf-ta:focus{border-color:var(--red)}
+.cf-in::placeholder,.cf-ta::placeholder{color:rgba(255,255,255,.2)}
+.cf-ta{resize:vertical;min-height:110px}
+.cf-sub{background:var(--red);color:#fff;border:none;padding:14px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-family:'Lato',sans-serif;transition:all .2s}
+.cf-sub:hover{background:#c9271f}
+.cf-msg{padding:12px;font-size:13px;font-weight:600;display:none;border-radius:2px;margin-top:4px}
+.cf-msg.ok{background:rgba(0,128,0,.1);color:#4caf50;border:1px solid rgba(0,128,0,.2)}
+.cf-msg.err{background:rgba(230,49,36,.1);color:var(--red);border:1px solid rgba(230,49,36,.2)}
 
-/* TOAST */
-.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(70px);background:var(--black);color:#fff;padding:11px 20px;border-radius:9px;font-size:13px;font-weight:600;z-index:999;opacity:0;transition:all .3s;pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,0.25);white-space:nowrap}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-.reveal{opacity:0;transform:translateY(18px);transition:all .55s cubic-bezier(.16,1,.3,1)}
+.reveal{opacity:0;transform:translateY(28px);transition:all .65s cubic-bezier(.16,1,.3,1)}
 .reveal.show{opacity:1;transform:translateY(0)}
-
 @media(max-width:960px){
-  .topbar,.nav-cats{display:none}
-  nav{padding:0 16px;gap:12px}
-  .hero{grid-template-columns:1fr}.hero-left{padding:48px 20px}.hero-right{display:none}
-  .trust-bar{padding:14px 20px}
-  .section,.cats-section,.deals-section,.testi-section,.nl-section,.contact-section{padding:48px 20px}
-  .products-grid,.deals-grid{grid-template-columns:repeat(2,1fr)}
-  .t-grid{grid-template-columns:1fr}
-  .nl-section,.contact-section{grid-template-columns:1fr;gap:32px}
-  footer{padding:44px 20px 24px}.ft{grid-template-columns:1fr 1fr}
-  .cart-sidebar{width:100%;max-width:400px}
-  .cf-row{grid-template-columns:1fr}
+  nav{padding:0 20px}.nav-menu,.nav-phone{display:none}
+  .hero{grid-template-columns:1fr}.hero-right{min-height:320px}.hero-left{padding:60px 20px}
+  .section{padding:72px 20px}.programs-grid,.trainers-grid,.pricing-grid{grid-template-columns:1fr}
+  .schedule-grid{grid-template-columns:repeat(3,1fr)}.t-grid{grid-template-columns:1fr}
+  .location-section{grid-template-columns:1fr}.loc-left{padding:72px 20px}.loc-right{min-height:320px}
+  .cta-section{grid-template-columns:1fr;gap:32px;padding:72px 20px}.cta-actions{align-items:flex-start}
+  .footer-top{grid-template-columns:1fr 1fr}.footer{padding:48px 20px 24px}
+  .gallery-item{width:240px;height:280px}.gallery-section{padding:72px 0}.gallery-header,.gallery-scroll{padding:0 20px}
+  .contact-form-section{padding:72px 20px}.cf-grid{grid-template-columns:1fr;gap:48px}.cf-row{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
-
-<div class="topbar">
-  <span>🚚 Free delivery above ₹499 &nbsp;|&nbsp; <span class="topbar-cta">Use CARTLY10 for 10% off</span></span>
-  <div class="topbar-right">
-    <a href="tel:+918688496208">📞 +91 86884 96208</a>
-    <a href="https://wa.me/918688496208" target="_blank">💬 WhatsApp</a>
-    <a href="mailto:karthikeyanetha7@gmail.com">✉️ Support</a>
+<nav id="nav">
+  <div class="logo-wrap">
+    <div class="logo-icon">K</div>
+    <div class="logo-text">K GYM <span>STUDIO</span></div>
   </div>
-</div>
-
-<nav>
-  <a href="#" class="nav-logo">Cart<span>ly</span></a>
-  <ul class="nav-cats">
-    <li><a href="#" onclick="filterCat('all',this);return false" class="active">All</a></li>
-    <li><a href="#" onclick="filterCat('electronics',this);return false">Electronics</a></li>
-    <li><a href="#" onclick="filterCat('fashion',this);return false">Fashion</a></li>
-    <li><a href="#" onclick="filterCat('home',this);return false">Home</a></li>
-    <li><a href="#" onclick="filterCat('beauty',this);return false">Beauty</a></li>
-    <li><a href="#" onclick="filterCat('sports',this);return false">Sports</a></li>
+  <ul class="nav-menu">
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#trainers">Trainers</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
-  <div class="nav-search">
-    <span>🔍</span>
-    <input type="text" placeholder="Search products..." oninput="searchProds(this.value)"/>
-  </div>
   <div class="nav-right">
-    <button class="nav-icon" onclick="showToast('❤️ Wishlist opened')" title="Wishlist">🤍</button>
-    <button class="nav-icon" onclick="openCart()" title="Cart">
-      🛒<span class="cart-badge" id="cartBadge">0</span>
-    </button>
+    <a href="tel:+918688496208" class="nav-phone">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6 19.79 19.79 0 0 1 1.6 5a2 2 0 0 1 1.99-2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17.92z"/></svg>
+      +91 86884 96208
+    </a>
+    <a href="#pricing" class="nav-btn">Free Trial</a>
   </div>
 </nav>
 
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-eyebrow">⚡ Mega Sale — Up to 70% Off</div>
-    <h1>Shop<br/><em>Smart.</em><br/>Live Better.</h1>
-    <p class="hero-sub">Best electronics, fashion, home & beauty — delivered fast, priced right, always authentic.</p>
-    <div class="hero-btns">
-      <a href="#products" class="btn-orange">🛍️ Shop Now</a>
-      <a href="#deals" class="btn-ghost-w">Today's Deals</a>
+    <div class="hero-eyebrow"><div class="eyebrow-line"></div><div class="eyebrow-text">Hyderabad's Premium Fitness Hub</div></div>
+    <h1>PUSH<br/><span class="outline">YOUR</span><br/>LIMIT<span class="accent">S</span></h1>
+    <p class="hero-sub">Real training. Real results. K Gym Studio brings together elite coaching, science-backed programs, and a community that pushes you to be your absolute best — every single day.</p>
+    <div class="hero-actions">
+      <a href="#pricing" class="btn-red">Start Free Trial</a>
+      <a href="#programs" class="btn-ghost">View Programs</a>
+    </div>
+    <div class="hero-meta">
+      <div><div class="hero-meta-num">8<span>+</span></div><div class="hero-meta-label">Years Active</div></div>
+      <div><div class="hero-meta-num">3<span>K+</span></div><div class="hero-meta-label">Members</div></div>
+      <div><div class="hero-meta-num">22<span>+</span></div><div class="hero-meta-label">Trainers</div></div>
+      <div><div class="hero-meta-num">4.9<span>★</span></div><div class="hero-meta-label">Google Rating</div></div>
     </div>
   </div>
-  <div class="hero-right"><div class="hero-prod-stack" id="heroStack"></div></div>
+  <div class="hero-right">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=900&q=80&fit=crop" alt="K Gym Studio — Premium Fitness"/>
+    <div class="hero-badge"><div class="badge-inner"><div class="badge-num">7</div><div class="badge-text">Day Free</div></div></div>
+    <div class="hero-bottom-strip">
+      <div class="strip-label">Available Programs</div>
+      <div class="strip-tags">
+        <div class="strip-tag active">Strength</div><div class="strip-tag active">HIIT</div>
+        <div class="strip-tag">Yoga</div><div class="strip-tag">Boxing</div>
+        <div class="strip-tag">Cardio</div><div class="strip-tag">Nutrition</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<div class="trust-bar">
-  <div class="trust-item"><span class="trust-icon">🚚</span><div class="trust-txt"><strong>Free Delivery</strong><span>Orders ₹499+</span></div></div>
-  <div class="trust-item"><span class="trust-icon">🔒</span><div class="trust-txt"><strong>Secure Payments</strong><span>UPI, Cards, COD</span></div></div>
-  <div class="trust-item"><span class="trust-icon">✅</span><div class="trust-txt"><strong>100% Authentic</strong><span>Verified products</span></div></div>
-  <div class="trust-item"><span class="trust-icon">↩️</span><div class="trust-txt"><strong>Easy Returns</strong><span>7-day policy</span></div></div>
-  <div class="trust-item"><span class="trust-icon">🎧</span><div class="trust-txt"><strong>24/7 Support</strong><span>Always here</span></div></div>
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="ticker-item">Strength Training<span class="ticker-sep"></span></div>
+    <div class="ticker-item">HIIT Classes<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Personal Training<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Yoga & Recovery<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Nutrition Plans<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Body Transformation<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Combat Sports<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Strength Training<span class="ticker-sep"></span></div>
+    <div class="ticker-item">HIIT Classes<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Personal Training<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Yoga & Recovery<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Nutrition Plans<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Body Transformation<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Combat Sports<span class="ticker-sep"></span></div>
+  </div>
 </div>
 
-<div class="cats-section">
-  <div class="sec-head reveal"><div><div class="sec-label">Browse</div><div class="sec-title">Shop by Category</div></div></div>
-  <div class="cats-scroll">
-    <a href="#" class="cat-pill active" onclick="filterCat('all',this);return false"><span class="cpemoji">🏪</span><span class="cpname">All</span><span class="cpcnt">120+ items</span></a>
-    <a href="#" class="cat-pill" onclick="filterCat('electronics',this);return false"><span class="cpemoji">📱</span><span class="cpname">Electronics</span><span class="cpcnt">2,400+</span></a>
-    <a href="#" class="cat-pill" onclick="filterCat('fashion',this);return false"><span class="cpemoji">👗</span><span class="cpname">Fashion</span><span class="cpcnt">5,800+</span></a>
-    <a href="#" class="cat-pill" onclick="filterCat('home',this);return false"><span class="cpemoji">🏠</span><span class="cpname">Home</span><span class="cpcnt">3,200+</span></a>
-    <a href="#" class="cat-pill" onclick="filterCat('beauty',this);return false"><span class="cpemoji">💄</span><span class="cpname">Beauty</span><span class="cpcnt">1,600+</span></a>
-    <a href="#" class="cat-pill" onclick="filterCat('sports',this);return false"><span class="cpemoji">🏋️</span><span class="cpname">Sports</span><span class="cpcnt">1,900+</span></a>
-    <a href="#" class="cat-pill" onclick="filterCat('books',this);return false"><span class="cpemoji">📚</span><span class="cpname">Books</span><span class="cpcnt">8,000+</span></a>
-    <a href="#" class="cat-pill" onclick="filterCat('toys',this);return false"><span class="cpemoji">🧸</span><span class="cpname">Toys</span><span class="cpcnt">900+</span></a>
+<section class="section programs-section" id="programs">
+  <div class="programs-header">
+    <div><div class="sec-label">What We Offer</div><div class="sec-title">TRAINING<br/>PROGRAMS</div></div>
+    <div class="sec-sub">Every program designed by certified coaches and tailored to your fitness level — beginner to elite.</div>
   </div>
-</div>
-
-<section class="section products-section" id="products">
-  <div class="sec-head reveal">
-    <div><div class="sec-label">Featured</div><div class="sec-title">Top Picks This Week</div></div>
-    <a href="#" class="see-all">View all →</a>
+  <div class="programs-grid">
+    <div class="prog-card reveal">
+      <div class="prog-img-wrap">
+        <img class="prog-img" src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80&fit=crop" alt="Strength Training"/>
+        <div class="prog-overlay"></div><div class="prog-num-overlay">01</div>
+      </div>
+      <div class="prog-body">
+        <div class="prog-name">Strength & Powerlifting</div>
+        <div class="prog-desc">Progressive overload programs built to increase raw strength. Includes squat, deadlift, and bench coaching from certified strength coaches.</div>
+        <div class="prog-foot"><div class="prog-tag">3–5 days/week</div><div class="prog-arrow">→</div></div>
+      </div>
+    </div>
+    <div class="prog-card reveal">
+      <div class="prog-img-wrap">
+        <img class="prog-img" src="https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?w=600&q=80&fit=crop" alt="HIIT Training"/>
+        <div class="prog-overlay"></div><div class="prog-num-overlay">02</div>
+      </div>
+      <div class="prog-body">
+        <div class="prog-name">HIIT Fat Burn</div>
+        <div class="prog-desc">45-minute high-intensity sessions that torch calories and keep your metabolism elevated for 24hrs post-workout. Fast results guaranteed.</div>
+        <div class="prog-foot"><div class="prog-tag">5 days/week</div><div class="prog-arrow">→</div></div>
+      </div>
+    </div>
+    <div class="prog-card reveal">
+      <div class="prog-img-wrap">
+        <img class="prog-img" src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=600&q=80&fit=crop" alt="Boxing MMA"/>
+        <div class="prog-overlay"></div><div class="prog-num-overlay">03</div>
+      </div>
+      <div class="prog-body">
+        <div class="prog-name">Boxing & MMA</div>
+        <div class="prog-desc">Train like a fighter. Full-contact and non-contact boxing, kickboxing and MMA fundamentals for every level — no experience needed.</div>
+        <div class="prog-foot"><div class="prog-tag">4 days/week</div><div class="prog-arrow">→</div></div>
+      </div>
+    </div>
+    <div class="prog-card reveal">
+      <div class="prog-img-wrap">
+        <img class="prog-img" src="https://images.unsplash.com/photo-1588286840104-8957b019727f?w=600&q=80&fit=crop" alt="Yoga Recovery"/>
+        <div class="prog-overlay"></div><div class="prog-num-overlay">04</div>
+      </div>
+      <div class="prog-body">
+        <div class="prog-name">Yoga & Recovery</div>
+        <div class="prog-desc">Flexibility, balance, and mental clarity. Our certified yoga instructors guide you through Ashtanga, Hatha, and sports recovery flows.</div>
+        <div class="prog-foot"><div class="prog-tag">Daily sessions</div><div class="prog-arrow">→</div></div>
+      </div>
+    </div>
+    <div class="prog-card reveal">
+      <div class="prog-img-wrap">
+        <img class="prog-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80&fit=crop" alt="Cardio Endurance"/>
+        <div class="prog-overlay"></div><div class="prog-num-overlay">05</div>
+      </div>
+      <div class="prog-body">
+        <div class="prog-name">Cardio & Endurance</div>
+        <div class="prog-desc">Indoor cycling, rowing, and treadmill programs designed to build your aerobic base and cardiovascular fitness over 8–12 week blocks.</div>
+        <div class="prog-foot"><div class="prog-tag">6 days/week</div><div class="prog-arrow">→</div></div>
+      </div>
+    </div>
+    <div class="prog-card reveal">
+      <div class="prog-img-wrap">
+        <img class="prog-img" src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80&fit=crop" alt="Nutrition Coaching"/>
+        <div class="prog-overlay"></div><div class="prog-num-overlay">06</div>
+      </div>
+      <div class="prog-body">
+        <div class="prog-name">Nutrition Coaching</div>
+        <div class="prog-desc">Custom macro plans, weekly check-ins, and supplement guidance. Real food, real structure — no crash diets or generic meal plans.</div>
+        <div class="prog-foot"><div class="prog-tag">Online + In-person</div><div class="prog-arrow">→</div></div>
+      </div>
+    </div>
   </div>
-  <div class="filter-bar">
-    <button class="filter-btn active" onclick="applyFilter('all',this)">All</button>
-    <button class="filter-btn" onclick="applyFilter('under1000',this)">Under ₹1,000</button>
-    <button class="filter-btn" onclick="applyFilter('under10000',this)">Under ₹10,000</button>
-    <button class="filter-btn" onclick="applyFilter('sale',this)">On Sale</button>
-    <button class="filter-btn" onclick="applyFilter('new',this)">New Arrivals</button>
-    <button class="filter-btn" onclick="applyFilter('top',this)">Top Rated</button>
-    <select class="sort-sel" onchange="doSort(this.value)">
-      <option value="">Sort: Featured</option>
-      <option value="low">Price: Low → High</option>
-      <option value="high">Price: High → Low</option>
-      <option value="rating">Top Rated</option>
-    </select>
-  </div>
-  <div class="products-grid" id="productsGrid"></div>
 </section>
 
-<section class="section deals-section" id="deals">
-  <div class="sec-head reveal">
-    <div><div class="sec-label">Flash Sale</div><div class="sec-title">Deals of the Day</div></div>
-    <a href="#" class="see-all">All deals →</a>
+<section class="section schedule-section" id="schedule">
+  <div class="sec-label" style="color:var(--red)">Weekly Timetable</div>
+  <div class="sec-title" style="color:#fff">CLASS SCHEDULE</div>
+  <div class="schedule-grid">
+    <div><div class="day-head">MON</div><div class="class-slot highlight"><div class="class-time">6:00 AM</div><div class="class-name">HIIT Burn</div></div><div class="class-slot"><div class="class-time">8:00 AM</div><div class="class-name">Yoga Flow</div></div><div class="class-slot highlight"><div class="class-time">6:00 PM</div><div class="class-name">Strength</div></div><div class="class-slot"><div class="class-time">8:00 PM</div><div class="class-name">Boxing</div></div></div>
+    <div><div class="day-head">TUE</div><div class="class-slot"><div class="class-time">6:00 AM</div><div class="class-name">Cardio</div></div><div class="class-slot highlight"><div class="class-time">7:30 AM</div><div class="class-name">Strength</div></div><div class="class-slot"><div class="class-time">5:30 PM</div><div class="class-name">MMA</div></div><div class="class-slot highlight"><div class="class-time">7:30 PM</div><div class="class-name">HIIT Burn</div></div></div>
+    <div><div class="day-head today">WED</div><div class="class-slot highlight"><div class="class-time">5:30 AM</div><div class="class-name">Strength</div></div><div class="class-slot"><div class="class-time">8:00 AM</div><div class="class-name">Yoga Flow</div></div><div class="class-slot"><div class="class-time">6:00 PM</div><div class="class-name">Cardio</div></div><div class="class-slot highlight"><div class="class-time">8:00 PM</div><div class="class-name">Boxing</div></div></div>
+    <div><div class="day-head">THU</div><div class="class-slot"><div class="class-time">6:00 AM</div><div class="class-name">HIIT Burn</div></div><div class="class-slot highlight"><div class="class-time">8:00 AM</div><div class="class-name">Strength</div></div><div class="class-slot highlight"><div class="class-time">5:30 PM</div><div class="class-name">MMA</div></div><div class="class-slot"><div class="class-time">7:30 PM</div><div class="class-name">Yoga</div></div></div>
+    <div><div class="day-head">FRI</div><div class="class-slot highlight"><div class="class-time">6:00 AM</div><div class="class-name">HIIT Burn</div></div><div class="class-slot"><div class="class-time">8:00 AM</div><div class="class-name">Cardio</div></div><div class="class-slot"><div class="class-time">6:00 PM</div><div class="class-name">Strength</div></div><div class="class-slot highlight"><div class="class-time">8:00 PM</div><div class="class-name">Boxing</div></div></div>
+    <div><div class="day-head">SAT</div><div class="class-slot highlight"><div class="class-time">7:00 AM</div><div class="class-name">Open Gym</div></div><div class="class-slot"><div class="class-time">9:00 AM</div><div class="class-name">Yoga</div></div><div class="class-slot highlight"><div class="class-time">11:00 AM</div><div class="class-name">HIIT Burn</div></div><div class="class-slot"><div class="class-time">4:00 PM</div><div class="class-name">MMA</div></div></div>
   </div>
-  <div class="deals-grid" id="dealsGrid"></div>
 </section>
 
-<section class="section testi-section">
-  <div class="sec-head reveal"><div><div class="sec-label">Reviews</div><div class="sec-title">Loved by 10,000+ Shoppers</div></div></div>
+<section class="section trainers-section" id="trainers">
+  <div class="sec-label">The Team</div>
+  <div class="sec-title">MEET YOUR COACHES</div>
+  <div class="trainers-grid">
+    <div class="trainer-card reveal">
+      <div class="trainer-photo-wrap">
+        <img class="trainer-photo" src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?w=600&q=80&fit=crop&crop=top" alt="Rajesh Kumar — Head Strength Coach"/>
+        <div class="trainer-exp">8 yrs exp</div>
+      </div>
+      <div class="trainer-info">
+        <div class="trainer-name">Rajesh Kumar</div>
+        <div class="trainer-role">Head Strength Coach</div>
+        <div class="trainer-bio">Former national powerlifter with 8 years coaching experience. Specializes in progressive overload programming and injury prevention. Helped 400+ members hit personal records.</div>
+        <div class="trainer-tags"><span class="trainer-tag">Powerlifting</span><span class="trainer-tag">NASM Certified</span><span class="trainer-tag">Sports Nutrition</span></div>
+      </div>
+    </div>
+    <div class="trainer-card reveal">
+      <div class="trainer-photo-wrap">
+        <img class="trainer-photo" src="https://images.unsplash.com/photo-1594381898411-846e7d193883?w=600&q=80&fit=crop&crop=top" alt="Priya Sharma — HIIT Coach"/>
+        <div class="trainer-exp">6 yrs exp</div>
+      </div>
+      <div class="trainer-info">
+        <div class="trainer-name">Priya Sharma</div>
+        <div class="trainer-role">HIIT & Combat Coach</div>
+        <div class="trainer-bio">CrossFit Level 2 and certified MMA coach. Known for high-energy classes and ability to push clients safely past their limits. Specializes in body transformation.</div>
+        <div class="trainer-tags"><span class="trainer-tag">CrossFit L2</span><span class="trainer-tag">MMA Coach</span><span class="trainer-tag">Fat Loss</span></div>
+      </div>
+    </div>
+    <div class="trainer-card reveal">
+      <div class="trainer-photo-wrap">
+        <img class="trainer-photo" src="https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=600&q=80&fit=crop&crop=top" alt="Ananya Reddy — Yoga Specialist"/>
+        <div class="trainer-exp">10 yrs exp</div>
+      </div>
+      <div class="trainer-info">
+        <div class="trainer-name">Ananya Reddy</div>
+        <div class="trainer-role">Yoga & Recovery Specialist</div>
+        <div class="trainer-bio">Trained in Mysore, certified in Ashtanga and Hatha yoga. Holds a sports therapy certification. Works with athletes on mobility, recovery, and mental balance.</div>
+        <div class="trainer-tags"><span class="trainer-tag">Ashtanga</span><span class="trainer-tag">Sports Therapy</span><span class="trainer-tag">Mobility</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section pricing-section" id="pricing">
+  <div class="sec-label">Membership</div>
+  <div class="sec-title">CHOOSE YOUR PLAN</div>
+  <div class="pricing-grid">
+    <div class="price-card reveal">
+      <div class="plan-name">Starter</div><div class="price-amt"><sup>₹</sup>999</div><div class="price-per">per month · billed monthly</div>
+      <ul class="feat-list">
+        <li class="feat-item"><span class="feat-check">✓</span>Gym floor access (6AM–10PM)</li>
+        <li class="feat-item"><span class="feat-check">✓</span>2 group classes per week</li>
+        <li class="feat-item"><span class="feat-check">✓</span>Locker room & showers</li>
+        <li class="feat-item"><span class="feat-check">✓</span>Basic fitness assessment</li>
+        <li class="feat-item"><span class="feat-x">✗</span>Personal training sessions</li>
+        <li class="feat-item"><span class="feat-x">✗</span>Nutrition consultation</li>
+      </ul>
+      <a href="tel:+918688496208" class="plan-btn plan-btn-outline">Get Started</a>
+    </div>
+    <div class="price-card hot reveal">
+      <div class="best-tag">Most Popular</div>
+      <div class="plan-name">Pro</div><div class="price-amt" style="color:var(--red)"><sup style="color:var(--red)">₹</sup>1,999</div><div class="price-per">per month · billed monthly</div>
+      <ul class="feat-list">
+        <li class="feat-item"><span class="feat-check">✓</span>Unlimited gym access</li>
+        <li class="feat-item"><span class="feat-check">✓</span>Unlimited group classes</li>
+        <li class="feat-item"><span class="feat-check">✓</span>1 PT session per week</li>
+        <li class="feat-item"><span class="feat-check">✓</span>Nutrition consultation</li>
+        <li class="feat-item"><span class="feat-check">✓</span>Progress tracking app</li>
+        <li class="feat-item"><span class="feat-check">✓</span>Guest pass (1/month)</li>
+      </ul>
+      <a href="tel:+918688496208" class="plan-btn plan-btn-filled">Get Started</a>
+    </div>
+    <div class="price-card reveal">
+      <div class="plan-name">Elite</div><div class="price-amt"><sup>₹</sup>3,499</div><div class="price-per">per month · billed monthly</div>
+      <ul class="feat-list">
+        <li class="feat-item"><span class="feat-check">✓</span>Everything in Pro</li>
+        <li class="feat-item"><span class="feat-check">✓</span>Daily PT sessions</li>
+        <li class="feat-item"><span class="feat-check">✓</span>Custom meal plan</li>
+        <li class="feat-item"><span class="feat-check">✓</span>Priority class booking</li>
+        <li class="feat-item"><span class="feat-check">✓</span>Guest passes (3/month)</li>
+        <li class="feat-item"><span class="feat-check">✓</span>Body composition analysis</li>
+      </ul>
+      <a href="tel:+918688496208" class="plan-btn plan-btn-outline">Get Started</a>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section">
+  <div class="gallery-header reveal">
+    <div class="sec-label" style="color:var(--red)">Inside K Gym</div>
+    <div class="sec-title" style="color:#fff">THE FACILITY</div>
+  </div>
+  <div class="gallery-scroll">
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=500&q=80&fit=crop" alt="Weight Room"/><div class="gallery-caption">Weight Room</div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=500&q=80&fit=crop" alt="Combat Zone"/><div class="gallery-caption">Combat Zone</div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500&q=80&fit=crop" alt="Yoga Studio"/><div class="gallery-caption">Yoga Studio</div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?w=500&q=80&fit=crop" alt="Cardio Deck"/><div class="gallery-caption">Cardio Deck</div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=80&fit=crop" alt="Nutrition Bar"/><div class="gallery-caption">Nutrition Bar</div></div>
+  </div>
+</section>
+
+<section class="section testimonials-section">
+  <div class="sec-label">Member Stories</div>
+  <div class="sec-title">REAL RESULTS, REAL PEOPLE</div>
   <div class="t-grid">
-    <div class="t-card reveal"><div class="tstars">★★★★★</div><div class="ttext">"Sony headphones in 24hrs, original packaging, perfect product. Cartly is my only stop for electronics. Never going back to others."</div><div class="tuser"><div class="tav ta1">👨</div><div><div class="tuname">Kiran Reddy</div><div class="tumeta">Hyderabad · Electronics</div></div><div class="ttag">✓ Verified</div></div></div>
-    <div class="t-card reveal"><div class="tstars">★★★★★</div><div class="ttext">"Returned wrong-size shoes — pickup next day, refund in 3 days, zero questions asked. Best e-commerce experience I've ever had."</div><div class="tuser"><div class="tav ta2">👩</div><div><div class="tuname">Priya Nair</div><div class="tumeta">Bengaluru · Fashion</div></div><div class="ttag">✓ Verified</div></div></div>
-    <div class="t-card reveal"><div class="tstars">★★★★★</div><div class="ttext">"MacBook Air M3 at ₹8,000 less than Amazon. Same-day delivery. 6 orders, all perfect. I tell everyone I know about Cartly."</div><div class="tuser"><div class="tav ta3">🧑</div><div><div class="tuname">Arjun Mehta</div><div class="tumeta">Mumbai · Tech</div></div><div class="ttag">✓ Verified</div></div></div>
+    <div class="t-card reveal"><div class="t-verified">✓ Verified Member</div><div class="t-stars">★★★★★</div><div class="t-body">I joined K Gym Studio with zero experience. Within 4 months I lost 14kg and completely changed my lifestyle. The coaches here genuinely care about your progress, not just your subscription.</div><div class="t-name">Arjun Mehta</div><div class="t-role">Software Engineer, Hyderabad</div><div class="t-date">Member since Jan 2024 · Lost 14kg</div></div>
+    <div class="t-card reveal"><div class="t-verified">✓ Verified Member</div><div class="t-stars">★★★★★</div><div class="t-body">The Pro plan is incredible value. I get unlimited classes, one-on-one training, and a nutrition plan all for under ₹2,000. I've tried 3 other gyms in Hyderabad and nothing comes close.</div><div class="t-name">Sneha Patel</div><div class="t-role">Doctor, Banjara Hills</div><div class="t-date">Member since Aug 2023 · 10kg muscle gain</div></div>
+    <div class="t-card reveal"><div class="t-verified">✓ Verified Member</div><div class="t-stars">★★★★★</div><div class="t-body">Ananya's yoga classes completely fixed my chronic back pain that I'd had for 2 years. The recovery-focused approach here is what separates K Gym from every other place I've been.</div><div class="t-name">Vikram Nair</div><div class="t-role">Business Owner, Jubilee Hills</div><div class="t-date">Member since Mar 2022 · Pain-free living</div></div>
+    <div class="t-card reveal"><div class="t-verified">✓ Verified Member</div><div class="t-stars">★★★★★</div><div class="t-body">Started boxing here as a stress outlet after a tough year. Now I compete at local amateur events. Priya's coaching style is intense but incredibly effective. Best thing I ever did for myself.</div><div class="t-name">Kavya Singh</div><div class="t-role">Marketing Manager, Madhapur</div><div class="t-date">Member since May 2023 · Amateur boxer</div></div>
   </div>
 </section>
 
-<section class="nl-section">
-  <div><div class="sec-label" style="color:var(--accent)">Newsletter</div><div class="nl-title">Deals Before Anyone Else</div><div class="nl-sub">Get ₹200 off your first order + exclusive deals every week. No spam.</div></div>
-  <div><div class="nl-form"><input class="nl-in" id="nlEmail" type="email" placeholder="your@email.com"/><button class="nl-btn" onclick="subNL()">Subscribe</button></div></div>
-</section>
-
-<section class="contact-section" id="contact">
-  <div>
-    <div class="sec-label reveal">Support</div>
-    <div class="sec-title reveal">We're Here to Help</div>
-    <div class="contact-cards">
-      <a href="tel:+918688496208" class="c-card reveal"><div class="c-icon">📞</div><div><div class="c-label">Call Us</div><div class="c-val">+91 86884 96208</div></div></a>
-      <a href="https://wa.me/918688496208" target="_blank" class="c-card reveal"><div class="c-icon">💬</div><div><div class="c-label">WhatsApp</div><div class="c-val">+91 86884 96208</div></div></a>
-      <a href="mailto:karthikeyanetha7@gmail.com" class="c-card reveal"><div class="c-icon">✉️</div><div><div class="c-label">Email</div><div class="c-val">karthikeyanetha7@gmail.com</div></div></a>
-      <a href="https://linkedin.com/in/karthikeya-gurram-59209726a" target="_blank" class="c-card reveal"><div class="c-icon">💼</div><div><div class="c-label">LinkedIn</div><div class="c-val">karthikeya-gurram</div></div></a>
-      <a href="https://github.com/karthikeyanetha1" target="_blank" class="c-card reveal"><div class="c-icon">🐙</div><div><div class="c-label">GitHub</div><div class="c-val">karthikeyanetha1</div></div></a>
+<section class="location-section" id="contact">
+  <div class="loc-left">
+    <div class="sec-label">Find Us</div>
+    <div class="sec-title">VISIT K GYM STUDIO</div>
+    <div class="loc-detail">
+      <div class="loc-row">
+        <div class="loc-icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><div class="loc-label">Address</div><div class="loc-val">Plot 42, Madhapur Main Road<br/>HITEC City, Hyderabad — 500081</div></div>
+      </div>
+      <div class="loc-row">
+        <div class="loc-icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div><div class="loc-label">Hours</div><div class="loc-val">Mon–Fri: 5:30 AM – 11:00 PM<br/>Sat–Sun: 7:00 AM – 9:00 PM</div></div>
+      </div>
+      <div class="loc-row">
+        <div class="loc-icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6 19.79 19.79 0 0 1 1.6 5a2 2 0 0 1 1.99-2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17.92z"/></svg></div>
+        <div><div class="loc-label">Phone & WhatsApp</div><div class="loc-val"><a href="tel:+918688496208">+91 86884 96208</a></div></div>
+      </div>
+      <div class="loc-row">
+        <div class="loc-icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+        <div><div class="loc-label">Email</div><div class="loc-val"><a href="mailto:karthikeyanetha7@gmail.com">karthikeyanetha7@gmail.com</a></div></div>
+      </div>
     </div>
   </div>
-  <div class="cf-wrap reveal">
-    <div class="cf-title">Send a Message</div>
-    <form id="contactForm">
-      <div class="cf-row">
-        <div class="cf-field"><label class="cf-label">Name</label><input class="cf-in" id="cfname" placeholder="Your name" required/></div>
-        <div class="cf-field"><label class="cf-label">Email</label><input class="cf-in" type="email" id="cfemail" placeholder="your@email.com" required/></div>
-      </div>
-      <div class="cf-row">
-        <div class="cf-field"><label class="cf-label">Phone</label><input class="cf-in" type="tel" id="cfphone" placeholder="+91 98765 43210"/></div>
-        <div class="cf-field"><label class="cf-label">Topic</label><select class="cf-sel" id="cftopic"><option>Order Issue</option><option>Return/Refund</option><option>Product Query</option><option>Partnership</option><option>Other</option></select></div>
-      </div>
-      <div class="cf-field"><label class="cf-label">Message</label><textarea class="cf-ta" id="cfmsg" placeholder="How can we help?" required></textarea></div>
-      <button type="submit" class="cf-sub" id="cfBtn">Send Message</button>
-      <div class="cf-msg" id="cfMsg"></div>
-    </form>
+  <div class="loc-right">
+    <img class="loc-map-img" src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=900&q=80&fit=crop" alt="HITEC City Hyderabad"/>
+    <div class="loc-map-overlay">
+      <svg class="map-pin-icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="var(--red)" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      <div class="map-area">HITEC City</div>
+      <div class="map-addr">Madhapur Main Road, Hyderabad<br/>Telangana, India — 500081</div>
+      <a href="https://maps.google.com/?q=HITEC+City+Hyderabad" target="_blank" class="map-btn">Open in Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact-form-section">
+  <div class="cf-grid">
+    <div class="cf-left">
+      <div class="sec-label" style="color:var(--red)">Get In Touch</div>
+      <div class="sec-title" style="color:#fff">SEND US A<br/>MESSAGE</div>
+      <div class="sec-sub" style="color:rgba(255,255,255,.4);margin-top:16px">Questions about membership, trial sessions, or corporate fitness plans? We reply within 2 hours.</div>
+    </div>
+    <div>
+      <form id="contactForm" class="cf-form">
+        <div class="cf-row">
+          <div class="cf-f"><label class="cf-lbl">Name</label><input class="cf-in" id="cfname" placeholder="Your name" required/></div>
+          <div class="cf-f"><label class="cf-lbl">Email</label><input class="cf-in" type="email" id="cfemail" placeholder="your@email.com" required/></div>
+        </div>
+        <div class="cf-row">
+          <div class="cf-f"><label class="cf-lbl">Phone</label><input class="cf-in" type="tel" id="cfphone" placeholder="+91 98765 43210"/></div>
+          <div class="cf-f"><label class="cf-lbl">Interest</label><input class="cf-in" id="cftopic" placeholder="e.g. Pro membership, PT sessions"/></div>
+        </div>
+        <div class="cf-f"><label class="cf-lbl">Message</label><textarea class="cf-ta" id="cfmsg" placeholder="Tell us your fitness goals and any questions..." required></textarea></div>
+        <button type="submit" class="cf-sub" id="cfBtn">Send Message →</button>
+        <div class="cf-msg" id="cfMsg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div>
+    <div class="cta-title">YOUR FIRST<br/>7 DAYS<br/>ARE FREE</div>
+    <div class="cta-sub">No credit card. No commitment. Just show up and train.<br/>Cancel anytime — but you won't want to.</div>
+  </div>
+  <div class="cta-actions">
+    <a href="tel:+918688496208" class="cta-btn-white">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6 19.79 19.79 0 0 1 1.6 5a2 2 0 0 1 1.99-2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17.92z"/></svg>
+      Call to Enroll
+    </a>
+    <a href="https://wa.me/918688496208" target="_blank" class="cta-btn-outline">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      WhatsApp Us
+    </a>
   </div>
 </section>
 
 <footer>
-  <div class="ft">
-    <div><div class="ft-logo">Cart<span>ly</span></div><div class="ft-desc">India's fastest-growing marketplace. Smart deals, authentic products, lightning delivery.</div><div class="ft-soc"><a href="https://wa.me/918688496208" target="_blank">💬</a><a href="mailto:karthikeyanetha7@gmail.com">✉️</a><a href="https://linkedin.com/in/karthikeya-gurram-59209726a" target="_blank">💼</a><a href="https://github.com/karthikeyanetha1" target="_blank">🐙</a></div></div>
-    <div><div class="ft-col-t">Shop</div><ul class="ft-lnks"><li><a href="#products">Electronics</a></li><li><a href="#products">Fashion</a></li><li><a href="#products">Home</a></li><li><a href="#deals">Deals</a></li></ul></div>
-    <div><div class="ft-col-t">Help</div><ul class="ft-lnks"><li><a href="#contact">Track Order</a></li><li><a href="#contact">Returns</a></li><li><a href="#contact">Shipping</a></li><li><a href="#contact">FAQ</a></li></ul></div>
-    <div><div class="ft-col-t">Contact</div><ul class="ft-lnks"><li><a href="tel:+918688496208">+91 86884 96208</a></li><li><a href="mailto:karthikeyanetha7@gmail.com">Email Support</a></li><li><a href="https://wa.me/918688496208" target="_blank">WhatsApp</a></li></ul></div>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo-wrap" style="margin-bottom:16px">
+        <div class="logo-icon">K</div>
+        <div class="logo-text">K GYM <span>STUDIO</span></div>
+      </div>
+      <p>Hyderabad's most results-driven fitness studio. Strength, cardio, combat and recovery — all under one roof in HITEC City.</p>
+    </div>
+    <div><div class="footer-col-title">Programs</div><ul class="footer-links"><li><a href="#programs">Strength</a></li><li><a href="#programs">HIIT</a></li><li><a href="#programs">Boxing</a></li><li><a href="#programs">Yoga</a></li><li><a href="#programs">Nutrition</a></li></ul></div>
+    <div><div class="footer-col-title">Studio</div><ul class="footer-links"><li><a href="#trainers">Our Coaches</a></li><li><a href="#schedule">Schedule</a></li><li><a href="#pricing">Membership</a></li><li><a href="#contact">Location</a></li></ul></div>
+    <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="tel:+918688496208">+91 86884 96208</a></li><li><a href="mailto:karthikeyanetha7@gmail.com">karthikeyanetha7@gmail.com</a></li><li><a href="https://wa.me/918688496208">WhatsApp</a></li><li><a href="https://linkedin.com/in/karthikeya-gurram-59209726a">LinkedIn</a></li><li><a href="https://github.com/karthikeyanetha1">GitHub</a></li></ul></div>
   </div>
-  <div class="ft-bot">
-    <div class="ft-copy">© 2025 Cartly. All rights reserved.<br/>Built by <a href="https://codewithkweb.com" target="_blank">CodeWithK</a> · <a href="mailto:karthikeyanetha7@gmail.com">karthikeyanetha7@gmail.com</a> · <a href="tel:+918688496208">+91 86884 96208</a></div>
-    <div class="ft-pay"><span>UPI</span><span>Visa</span><span>Mastercard</span><span>COD</span><span>EMI</span></div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 K Gym Studio. All rights reserved.<br/>Website by <a href="https://codewithkweb.com" target="_blank">CodeWithK</a> · karthikeyanetha7@gmail.com · +91 86884 96208</div>
+    <div class="footer-social">
+      <a href="https://wa.me/918688496208" class="social-link" title="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>
+      <a href="mailto:karthikeyanetha7@gmail.com" class="social-link" title="Email"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+      <a href="https://linkedin.com/in/karthikeya-gurram-59209726a" target="_blank" class="social-link" title="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <a href="https://github.com/karthikeyanetha1" target="_blank" class="social-link" title="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+    </div>
   </div>
 </footer>
 
-<!-- CART SIDEBAR -->
-<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
-<div class="cart-sidebar" id="cartSidebar">
-  <div class="cart-hdr">
-    <div class="cart-hdr-left"><div class="cart-title">Your Cart</div><span class="cart-cnt" id="cartCnt">0 items</span></div>
-    <button class="cart-cls" onclick="closeCart()">✕</button>
-  </div>
-  <div class="cart-body" id="cartBody"></div>
-  <div class="cart-ftr" id="cartFtr" style="display:none">
-    <div class="coupon-row">
-      <input class="coupon-in" id="couponIn" placeholder="Coupon code (try CARTLY10)"/>
-      <button class="coupon-btn" onclick="applyCoupon()">Apply</button>
-    </div>
-    <div class="coupon-ok" id="couponOk">✅ CARTLY10 applied — 10% off!</div>
-    <div class="totals">
-      <div class="t-row"><span>Subtotal</span><span id="tSub">₹0</span></div>
-      <div class="t-row disc" id="tDiscRow" style="display:none"><span>Discount (10%)</span><span id="tDisc">-₹0</span></div>
-      <div class="t-row"><span>Delivery</span><span id="tDel">₹49</span></div>
-      <div class="t-row total"><span>Total</span><span id="tTot">₹0</span></div>
-    </div>
-    <button class="checkout-btn" onclick="checkout()">Proceed to Checkout →</button>
-    <div class="cart-secure">🔒 Secure · 256-bit SSL encrypted</div>
-  </div>
-</div>
-
-<!-- SUCCESS MODAL -->
-<div class="modal-overlay" id="successModal">
-  <div class="modal">
-    <div class="modal-icon">🎉</div>
-    <div class="modal-title">Order Placed!</div>
-    <div class="modal-sub">Your order is confirmed. A confirmation will be sent to <strong>karthikeyanetha7@gmail.com</strong> and +91 86884 96208.</div>
-    <div class="modal-oid" id="modalOid">#CARTLY-000000</div>
-    <button class="modal-close" onclick="closeModal()">Continue Shopping</button>
-  </div>
-</div>
-
-<div class="toast" id="toast"></div>
-
 <script>
 emailjs.init("3tdUNyiRYlYZmRys7");
-
-// ─── DATA ───
-const PRODUCTS = [
-  {id:1,name:'iPhone 15 Pro Max 256GB',cat:'electronics',e:'📱',bg:'pi1',price:134900,old:159900,rating:4.9,rc:2847,badge:'b-sale',bt:'-16%',isNew:false,variant:'Natural Titanium'},
-  {id:2,name:'Sony WH-1000XM5 Headphones',cat:'electronics',e:'🎧',bg:'pi2',price:24990,old:34990,rating:4.8,rc:4120,badge:'b-hot',bt:'🔥 Hot',isNew:false,variant:'Black'},
-  {id:3,name:'Nike Air Max 270 React',cat:'fashion',e:'👟',bg:'pi3',price:8995,old:12995,rating:4.7,rc:1532,badge:'b-sale',bt:'-31%',isNew:false,variant:'White/Blue Sz 9'},
-  {id:4,name:'Philips 3000 Espresso Machine',cat:'home',e:'☕',bg:'pi4',price:18499,old:24999,rating:4.9,rc:876,badge:'b-new',bt:'New',isNew:true,variant:'Glossy Black'},
-  {id:5,name:'MacBook Air M3 13" 8GB 256GB',cat:'electronics',e:'💻',bg:'pi5',price:104900,old:134900,rating:4.9,rc:3210,badge:'b-sale',bt:'-22%',isNew:false,variant:'Midnight'},
-  {id:6,name:'Sony Alpha ZV-E10 Camera Kit',cat:'electronics',e:'📷',bg:'pi6',price:54990,old:69990,rating:4.7,rc:654,badge:'b-new',bt:'New',isNew:true,variant:'Black + 16-50mm'},
-  {id:7,name:'Premium Leather Crossbody Bag',cat:'fashion',e:'👜',bg:'pi7',price:2399,old:3999,rating:4.8,rc:289,badge:'b-sale',bt:'-40%',isNew:false,variant:'Cognac Brown'},
-  {id:8,name:'The Ordinary Hyaluronic Serum',cat:'beauty',e:'🌿',bg:'pi8',price:790,old:1200,rating:4.9,rc:5421,badge:'b-best',bt:'⭐ Best',isNew:false,variant:'30ml'},
-  {id:9,name:'boAt Rockerz 450 Headphones',cat:'electronics',e:'🎵',bg:'pi9',price:1299,old:2490,rating:4.6,rc:12400,badge:'b-sale',bt:'-48%',isNew:false,variant:'Luscious Black'},
-  {id:10,name:"Levi's 511 Slim Fit Jeans",cat:'fashion',e:'👖',bg:'pi10',price:2499,old:3999,rating:4.5,rc:3200,badge:'b-sale',bt:'-38%',isNew:false,variant:'Dark Blue 32×30'},
-  {id:11,name:'Instant Pot Duo 7-in-1 6Qt',cat:'home',e:'🍲',bg:'pi11',price:8999,old:12999,rating:4.8,rc:7600,badge:'b-best',bt:'⭐ Best',isNew:false,variant:'6 Quart Silver'},
-  {id:12,name:'Puma Training Shorts',cat:'sports',e:'🩳',bg:'pi12',price:999,old:1799,rating:4.5,rc:890,badge:'b-sale',bt:'-44%',isNew:true,variant:'Black L'},
-];
-const DEALS = [
-  {id:'d1',name:'Apple Watch Series 9 GPS 45mm',e:'⌚',bg:'#fff8f5',price:38900,old:50000,sold:72,time:'4h 23m',variant:'Midnight Aluminium'},
-  {id:'d2',name:'PS5 DualSense Wireless Controller',e:'🎮',bg:'#f5f8ff',price:5490,old:6999,sold:58,time:'2h 10m',variant:'Midnight Black'},
-  {id:'d3',name:'MyProtein Whey 1kg Chocolate',e:'💪',bg:'#f5fff8',price:1299,old:1999,sold:40,time:'6h 45m',variant:'Chocolate Smooth'},
-  {id:'d4',name:'Luxury Soy Wax Candle Set 4pc',e:'🕯️',bg:'#fffcf5',price:1899,old:2799,sold:89,time:'0h 58m',variant:'Lavender & Vanilla'},
-];
-
-// ─── STATE ───
-let cart=[], coupon=false, activeCat='all';
-const fmt=n=>'₹'+n.toLocaleString('en-IN');
-const pct=(p,o)=>Math.round((1-p/o)*100);
-
-// ─── RENDER PRODUCTS ───
-function renderProds(list){
-  document.getElementById('productsGrid').innerHTML = list.length
-    ? list.map((p,i)=>`
-      <div class="prod-card reveal" style="animation-delay:${i*40}ms">
-        <div class="prod-img ${p.bg}">
-          <div class="prod-emoji">${p.e}</div>
-          <div class="pbadge ${p.badge}">${p.bt}</div>
-          <button class="pwish" onclick="wish(this);event.stopPropagation()">🤍</button>
-        </div>
-        <div class="prod-info">
-          <div class="pcat">${p.cat}</div>
-          <div class="pname">${p.name}</div>
-          <div class="prating">
-            <span class="pstars">${'★'.repeat(Math.floor(p.rating))}${'☆'.repeat(5-Math.floor(p.rating))}</span>
-            <span class="prc">(${p.rc.toLocaleString('en-IN')})</span>
-          </div>
-          <div class="pfooter">
-            <div>
-              <span class="pprice">${fmt(p.price)}</span>
-              <span class="pold">${fmt(p.old)}</span>
-              <span class="psave">${pct(p.price,p.old)}% off · Save ${fmt(p.old-p.price)}</span>
-            </div>
-            <button class="atc" onclick="addToCart(${p.id},this);event.stopPropagation()" title="Add to cart">+</button>
-          </div>
-        </div>
-      </div>`).join('')
-    : '<p style="color:var(--muted);padding:40px;grid-column:span 4;text-align:center">No products found.</p>';
-  initReveal();
-}
-
-function renderDeals(){
-  document.getElementById('dealsGrid').innerHTML = DEALS.map(d=>`
-    <div class="deal-card reveal">
-      <div class="deal-img" style="background:${d.bg}">${d.e}</div>
-      <div class="deal-body">
-        <div class="deal-timer">⏰ Ends in ${d.time}</div>
-        <div class="deal-n">${d.name}</div>
-        <div class="deal-bar-wrap"><div class="deal-bar" style="width:${d.sold}%"></div></div>
-        <div class="deal-sold">${d.sold}% claimed — only ${100-d.sold} left!</div>
-        <div class="deal-foot"><div class="deal-p">${fmt(d.price)}</div><div class="deal-sv">Save ${fmt(d.old-d.price)}</div></div>
-        <button class="grab-btn" onclick="addDeal('${d.id}','${d.name}',${d.price},'${d.e}','${d.variant}',this)">Grab Deal →</button>
-      </div>
-    </div>`).join('');
-  initReveal();
-}
-
-function renderHero(){
-  document.getElementById('heroStack').innerHTML = PRODUCTS.slice(0,4).map(p=>`
-    <div class="hps-card" onclick="addToCart(${p.id},null)">
-      <div class="hps-emoji">${p.e}</div>
-      <div style="flex:1">
-        <div class="hps-name">${p.name}</div>
-        <div class="hps-price">${fmt(p.price)}<span class="hps-old">${fmt(p.old)}</span></div>
-      </div>
-      <div class="hps-off">${pct(p.price,p.old)}% OFF</div>
-      <button class="hps-add" onclick="event.stopPropagation();addToCart(${p.id},this)">+</button>
-    </div>`).join('');
-}
-
-// ─── CART ───
-function addToCart(id, btn){
-  const p = PRODUCTS.find(x=>x.id===id);
-  if(!p) return;
-  const ex = cart.find(c=>c.id===id);
-  ex ? ex.qty++ : cart.push({...p,qty:1});
-  refreshCart();
-  if(btn){btn.textContent='✓';btn.classList.add('added');setTimeout(()=>{btn.textContent='+';btn.classList.remove('added');},1200);}
-  showToast('🛒 '+p.name.slice(0,28)+'... added!');
-  bumpBadge();
-}
-function addDeal(id,name,price,emoji,variant,btn){
-  const ex = cart.find(c=>c.id===id);
-  ex ? ex.qty++ : cart.push({id,name,price,e:emoji,variant,qty:1});
-  refreshCart();
-  if(btn){btn.textContent='✓ Added!';setTimeout(()=>btn.textContent='Grab Deal →',1200);}
-  showToast('⚡ '+name.slice(0,28)+'... grabbed!');
-  bumpBadge();
-}
-function removeItem(id){cart=cart.filter(c=>c.id!=id);refreshCart();}
-function changeQty(id,d){
-  const item=cart.find(c=>c.id==id);
-  if(!item)return;
-  item.qty+=d;
-  if(item.qty<=0)removeItem(id);
-  else refreshCart();
-}
-function refreshCart(){
-  const total=cart.reduce((s,c)=>s+c.qty,0);
-  document.getElementById('cartBadge').textContent=total;
-  document.getElementById('cartCnt').textContent=total+' item'+(total!==1?'s':'');
-  renderCartBody();
-}
-function renderCartBody(){
-  const body=document.getElementById('cartBody');
-  const ftr=document.getElementById('cartFtr');
-  if(!cart.length){
-    body.innerHTML=`<div class="cart-empty"><div class="ce-icon">🛒</div><div class="ce-title">Cart is empty</div><div class="ce-sub">Add some items to get started!</div></div>`;
-    ftr.style.display='none';return;
-  }
-  ftr.style.display='block';
-  body.innerHTML=`<div class="cart-items-list">${cart.map(item=>`
-    <div class="cart-item">
-      <div class="ci-thumb">${item.e||'📦'}</div>
-      <div class="ci-det">
-        <div class="ci-n">${item.name}</div>
-        <div class="ci-var">${item.variant||'Standard'}</div>
-        <div class="ci-ctrl">
-          <div class="qty-box">
-            <button class="qty-btn" onclick="changeQty('${item.id}',-1)">−</button>
-            <span class="qty-num">${item.qty}</span>
-            <button class="qty-btn" onclick="changeQty('${item.id}',1)">+</button>
-          </div>
-          <button class="ci-del" onclick="removeItem('${item.id}')">Remove</button>
-        </div>
-      </div>
-      <div class="ci-p">${fmt(item.price*item.qty)}</div>
-    </div>`).join('')}</div>`;
-  calcTotals();
-}
-function calcTotals(){
-  const sub=cart.reduce((s,c)=>s+c.price*c.qty,0);
-  const disc=coupon?Math.round(sub*.1):0;
-  const del=sub>=499?0:49;
-  const tot=sub-disc+del;
-  document.getElementById('tSub').textContent=fmt(sub);
-  document.getElementById('tTot').textContent=fmt(tot);
-  document.getElementById('tDel').textContent=del===0?'FREE 🎉':fmt(del);
-  const dr=document.getElementById('tDiscRow');
-  dr.style.display=coupon?'flex':'none';
-  document.getElementById('tDisc').textContent='-'+fmt(disc);
-}
-function applyCoupon(){
-  if(document.getElementById('couponIn').value.trim().toUpperCase()==='CARTLY10'){
-    coupon=true;
-    document.getElementById('couponOk').style.display='block';
-    calcTotals();showToast('✅ 10% discount applied!');
-  }else showToast('❌ Invalid coupon code');
-}
-function openCart(){document.getElementById('cartOverlay').classList.add('open');document.getElementById('cartSidebar').classList.add('open');document.body.style.overflow='hidden';}
-function closeCart(){document.getElementById('cartOverlay').classList.remove('open');document.getElementById('cartSidebar').classList.remove('open');document.body.style.overflow='';}
-function bumpBadge(){const b=document.getElementById('cartBadge');b.classList.remove('bump');void b.offsetWidth;b.classList.add('bump');}
-function checkout(){
-  const oid='#CARTLY-'+Math.random().toString(36).substr(2,8).toUpperCase();
-  document.getElementById('modalOid').textContent=oid;
-  document.getElementById('successModal').classList.add('open');
-  cart=[];coupon=false;refreshCart();closeCart();
-}
-function closeModal(){document.getElementById('successModal').classList.remove('open');showToast('🎉 Order confirmed! Check your email.');}
-
-// ─── FILTERS ───
-function filterCat(cat,el){
-  activeCat=cat;
-  document.querySelectorAll('.nav-cats a,.cat-pill').forEach(a=>a.classList.remove('active'));
-  if(el)el.classList.add('active');
-  renderProds(cat==='all'?PRODUCTS:PRODUCTS.filter(p=>p.cat===cat));
-  document.getElementById('productsGrid').scrollIntoView({behavior:'smooth',block:'start'});
-}
-function applyFilter(type,el){
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-  if(el)el.classList.add('active');
-  let list=activeCat==='all'?[...PRODUCTS]:PRODUCTS.filter(p=>p.cat===activeCat);
-  if(type==='under1000')list=list.filter(p=>p.price<1000);
-  else if(type==='under10000')list=list.filter(p=>p.price<10000);
-  else if(type==='sale')list=list.filter(p=>p.badge==='b-sale');
-  else if(type==='new')list=list.filter(p=>p.isNew);
-  else if(type==='top')list=[...list].sort((a,b)=>b.rating-a.rating);
-  renderProds(list);
-}
-function doSort(v){
-  let list=activeCat==='all'?[...PRODUCTS]:PRODUCTS.filter(p=>p.cat===activeCat);
-  if(v==='low')list.sort((a,b)=>a.price-b.price);
-  else if(v==='high')list.sort((a,b)=>b.price-a.price);
-  else if(v==='rating')list.sort((a,b)=>b.rating-a.rating);
-  renderProds(list);
-}
-function searchProds(q){
-  if(!q){renderProds(PRODUCTS);return;}
-  renderProds(PRODUCTS.filter(p=>p.name.toLowerCase().includes(q.toLowerCase())||p.cat.toLowerCase().includes(q.toLowerCase())));
-}
-function wish(btn){
-  btn.classList.toggle('liked');
-  btn.textContent=btn.classList.contains('liked')?'❤️':'🤍';
-  showToast(btn.classList.contains('liked')?'❤️ Added to wishlist':'Removed from wishlist');
-}
-
-// ─── TOAST ───
-function showToast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.classList.add('show');
-  clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2800);
-}
-
-// ─── NEWSLETTER ───
-function subNL(){
-  const e=document.getElementById('nlEmail').value;
-  if(!e||!e.includes('@')){showToast('⚠️ Enter a valid email');return;}
-  showToast('🎉 Subscribed! ₹200 coupon sent to '+e);
-  document.getElementById('nlEmail').value='';
-}
-
-// ─── CONTACT ───
 document.getElementById('contactForm').addEventListener('submit',async function(e){
   e.preventDefault();
   const btn=document.getElementById('cfBtn'),msg=document.getElementById('cfMsg');
   btn.disabled=true;btn.textContent='Sending...';
   try{
-    await emailjs.send("service_pwkfbys","template_clvsbvr",{
-      from_name:document.getElementById('cfname').value,
-      from_email:document.getElementById('cfemail').value,
-      phone:document.getElementById('cfphone').value,
-      website:'Cartly · '+document.getElementById('cftopic').value,
-      message:document.getElementById('cfmsg').value,
-    });
-    msg.className='cf-msg ok';msg.textContent='✅ Message sent! We\'ll reply within 24 hours.';msg.style.display='block';this.reset();
-  }catch(err){
-    msg.className='cf-msg err';msg.textContent='❌ Failed. WhatsApp us at +91 86884 96208';msg.style.display='block';
-  }
-  btn.disabled=false;btn.textContent='Send Message';
+    await emailjs.send('service_pwkfbys','template_clvsbvr',{from_name:document.getElementById('cfname').value,from_email:document.getElementById('cfemail').value,phone:document.getElementById('cfphone').value,website:'K Gym Studio · '+document.getElementById('cftopic').value,message:document.getElementById('cfmsg').value});
+    msg.className='cf-msg ok';msg.textContent='✓ Message sent! We will call you back within 2 hours.';msg.style.display='block';this.reset();
+  }catch(err){msg.className='cf-msg err';msg.textContent='Failed to send. Please WhatsApp us at +91 86884 96208';msg.style.display='block';}
+  btn.disabled=false;btn.textContent='Send Message →';
 });
-
-// ─── REVEAL ───
-function initReveal(){
-  const obs=new IntersectionObserver((entries)=>{
-    entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('show'),i*55);obs.unobserve(e.target);}});
-  },{threshold:0.07});
-  document.querySelectorAll('.reveal:not(.show)').forEach(el=>obs.observe(el));
-}
-
-// ─── INIT ───
-renderProds(PRODUCTS);
-renderDeals();
-renderHero();
-initReveal();
+const obs=new IntersectionObserver(e=>{e.forEach((en,i)=>{if(en.isIntersecting){setTimeout(()=>en.target.classList.add('show'),i*80);obs.unobserve(en.target);}})},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>
